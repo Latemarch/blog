@@ -9,6 +9,7 @@ import Projects from "./pages/Projects";
 import Articles from "./pages/Articles";
 import Article from "./pages/Article";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import Edit from "./pages/Edit";
 
 const router = createBrowserRouter([
 	{
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
 			{ path: "/Projects", element: <Projects /> },
 			{ path: "/articles", element: <Articles /> },
 			{ path: "/articles/:id", element: <Article /> },
+			{ path: "/edit", element: <Edit /> },
 		],
 	},
 ]);

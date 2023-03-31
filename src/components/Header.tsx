@@ -19,6 +19,9 @@ export default function Header() {
 				<Link to="/">
 					<Button key={"Scraps"} name={"Scraps"} />
 				</Link>
+				<Link to="edit">
+					<Button key={"edit"} name={"edit"} />
+				</Link>
 			</ul>
 		</header>
 	);

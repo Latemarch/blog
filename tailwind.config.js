@@ -8,6 +8,7 @@ module.exports = {
 				Dbg: "#000000",
 				Dbg2: "#18181B",
 				Dtab: "#252529",
+				Dinput: "#161A22",
 			},
 			textColor: {
 				Dh1: "#F4F4F5",
