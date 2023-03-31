@@ -1,14 +1,9 @@
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import React, { useState } from "react";
+import { IArticle } from "../apis/Firebase";
 
-type IValue = {
-	writer: string;
-	title: string;
-	contents: string;
-	createdAt: Date;
-};
 interface IProp {
-	article?: IValue;
+	id?: string;
 }
 const defaultArticle = {
 	createdAt: new Date(),
@@ -16,11 +11,9 @@ const defaultArticle = {
 	title: "",
 	contents: "",
 };
-export default function Edit({ article }: IProp) {
-	if (!article) {
-		article = defaultArticle;
-	}
-	const [value, setValue] = React.useState<IValue>(article);
+export default function Edit({ id }: IProp) {
+	const article = defaultArticle;
+	const [value, setValue] = React.useState<IArticle>(article);
 	const [markdown, setMarkdown] = useState("");
 	const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
