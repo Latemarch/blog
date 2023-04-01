@@ -27,13 +27,6 @@ const auth = getAuth();
 const database = getDatabase();
 const dbRef = ref(getDatabase(app));
 
-export interface IUser {
-	isAdmin: any;
-	photoURL: string | null;
-	uid: string;
-	email: string | null;
-	displayName: string | null;
-}
 export async function logIn() {
 	signInWithPopup(auth, provider).catch(console.error);
 }
@@ -67,7 +60,22 @@ export async function isAdmin(user: IUser) {
 }
 
 export function addPost(article: IArticle) {
-	set(ref(database, `post/${article.id}`), article);
+	set(ref(database, `posts/${article.id}`), article);
+}
+
+export async function getPosts(): Promise<IArticle[]> {
+	const snapshot = await get(child(dbRef, "posts"));
+	if (snapshot.exists()) {
+		const data: IArticle[] = Object.values(snapshot.val());
+		return data;
+	}
+	return [];
+}
+
+export async function getPost(id: string | undefined): Promise<IArticle> {
+	const snapshot = await get(child(dbRef, `posts/${id}`));
+	const post = snapshot.val();
+	return post;
 }
 
 export type IArticle = {
@@ -75,6 +83,14 @@ export type IArticle = {
 	author: string;
 	title: string;
 	body: string;
-	createdAt: Date;
+	createdAt: string;
 	tag?: string[];
 };
+
+export interface IUser {
+	isAdmin: any;
+	photoURL: string | null;
+	uid: string;
+	email: string | null;
+	displayName: string | null;
+}
