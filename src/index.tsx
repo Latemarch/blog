@@ -8,7 +8,8 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Articles from "./pages/Articles";
 import Article from "./pages/Article";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import Edit from "./pages/Edit";
 
 const router = createBrowserRouter([
 	{
@@ -16,9 +17,11 @@ const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{ index: true, element: <Home /> },
+			{ path: "/about", element: <Home /> },
 			{ path: "/Projects", element: <Projects /> },
 			{ path: "/articles", element: <Articles /> },
 			{ path: "/articles/:id", element: <Article /> },
+			{ path: "/edit", element: <Edit /> },
 		],
 	},
 ]);
@@ -28,10 +31,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<React.StrictMode>
-		<Helmet>
-			<html className="dark" />
-			<body className="flex h-full flex-col bg-red-200 dark:bg-Dbg" />
-		</Helmet>
+		<HelmetProvider>
+			<Helmet>
+				<html className="dark" />
+				<body className="flex h-full flex-col bg-red-200 dark:bg-Dbg" />
+			</Helmet>
+		</HelmetProvider>
 		<div className="fixed inset-0 flex justify-center bg-zinc-00 sm:px-8">
 			<div className="flex w-full max-w-7xl lg:px-8">
 				<div className="w-full bg-red-100 ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
