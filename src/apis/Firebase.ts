@@ -6,6 +6,7 @@ import {
 	User,
 	onAuthStateChanged,
 	signOut,
+	NextFn,
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
@@ -23,25 +24,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
-// const database = getDatabase();
+const database = getDatabase();
 const dbRef = ref(getDatabase(app));
 
+export interface IUser {
+	isAdmin: any;
+	photoURL: string | null;
+	uid: string;
+	email: string | null;
+	displayName: string | null;
+}
 export async function logIn() {
 	signInWithPopup(auth, provider).catch(console.error);
 }
 
 export async function logOut() {
-	signOut(auth).catch(console.error);
+	signOut(auth)
+		.then((res) => console.log(res))
+		.catch(console.error);
 }
-
-export function onUserStateChange(callback: (user: User | null) => void) {
+export function onUserStateChange(callback: (user: IUser | undefined) => void) {
 	onAuthStateChanged(auth, async (user) => {
-		const updatedUser = user && (await isAdmin(user));
-		callback(updatedUser);
+		if (user) {
+			const { photoURL, uid, email, displayName } = user;
+			const sortedUser = { isAdmin, photoURL, uid, email, displayName };
+			const updatedUser = await isAdmin(sortedUser);
+			callback(updatedUser);
+		} else {
+			const updatedUser = undefined;
+			callback(updatedUser);
+		}
 	});
 }
 
-export async function isAdmin(user: User) {
+export async function isAdmin(user: IUser) {
 	return get(child(dbRef, "admins")) //
 		.then((snapshot) => {
 			const admins = snapshot.val();
