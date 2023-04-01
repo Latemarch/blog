@@ -1,8 +1,6 @@
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import React, { SetStateAction, useState } from "react";
 import { IArticle } from "../apis/Firebase";
-import { v4 as uuid } from "uuid";
-import { Dispatch } from "@reduxjs/toolkit";
 
 interface IProp {
 	article: IArticle;
@@ -20,10 +18,10 @@ export default function Edit({
 		<div className="flex h-full flex-col">
 			<form className="flex h-full flex-col" onSubmit={handleSubmit}>
 				<input
+					className="focus:outline-none text-2xl bg-Dinput"
 					value={article.title}
 					onChange={handleInput}
 					name={"title"}
-					className="focus:outline-none text-2xl bg-Dinput"
 					placeholder="Title..."
 					required
 				/>
