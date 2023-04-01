@@ -1,4 +1,4 @@
-import { child, get, getDatabase, ref } from "firebase/database";
+import { child, get, getDatabase, ref, set } from "firebase/database";
 import {
 	getAuth,
 	signInWithPopup,
@@ -66,9 +66,15 @@ export async function isAdmin(user: IUser) {
 		});
 }
 
+export function addPost(article: IArticle) {
+	set(ref(database, `post/${article.id}`), article);
+}
+
 export type IArticle = {
-	writer: string;
+	id: string;
+	author: string;
 	title: string;
-	contents: string;
+	body: string;
 	createdAt: Date;
+	tag?: string[];
 };

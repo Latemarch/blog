@@ -10,6 +10,9 @@ import Articles from "./pages/Articles";
 import Article from "./pages/Article";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Edit from "./pages/Edit";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import EditContainer from "./containers/EditContainer";
 
 const router = createBrowserRouter([
 	{
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
 			{ path: "/Projects", element: <Projects /> },
 			{ path: "/articles", element: <Articles /> },
 			{ path: "/articles/:id", element: <Article /> },
-			{ path: "/edit", element: <Edit /> },
+			{ path: "/edit", element: <EditContainer /> },
 		],
 	},
 ]);
@@ -42,7 +45,9 @@ root.render(
 				<div className="w-full bg-red-100 ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
 			</div>
 		</div>
-		<RouterProvider router={router} />
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
 	</React.StrictMode>
 );
 
