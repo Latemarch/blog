@@ -10,8 +10,20 @@ export default function Articles() {
 	posts && console.log("Articles", posts);
 	return (
 		<>
-			{isLoading && <p>Loading...</p>}
-			{posts && posts.map((post) => <ArticleCard key={post.id} post={post} />)}
+			<div className="my-20 ">
+				<h1 className="text-5xl mb-4">
+					Writing on software stack, computer science,and project building.
+				</h1>
+				<span className="text-zinc-400">
+					All of my long-form thoughts on programming, project design, and more,
+					collected in chronological order.
+				</span>
+			</div>
+			<div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+				{isLoading && <p>Loading...</p>}
+				{posts &&
+					posts.map((post) => <ArticleCard key={post.id} post={post} />)}
+			</div>
 		</>
 	);
 }
