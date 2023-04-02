@@ -13,6 +13,7 @@ import Edit from "./pages/Edit";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import EditContainer from "./containers/EditContainer";
+import About from "./pages/About";
 
 const router = createBrowserRouter([
 	{
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{ index: true, element: <Home /> },
-			{ path: "/about", element: <Home /> },
+			{ path: "/about", element: <About /> },
 			{ path: "/Projects", element: <Projects /> },
 			{ path: "/articles", element: <Articles /> },
 			{ path: "/articles/:id", element: <Article /> },

@@ -11,7 +11,7 @@ export default function Articles() {
 	return (
 		<>
 			<div className="my-20 ">
-				<h1 className="text-5xl mb-4">
+				<h1 className="text-4xl mb-4 tracking-tight">
 					Writing on software stack, computer science,and project building.
 				</h1>
 				<span className="text-zinc-400">

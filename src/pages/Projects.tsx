@@ -6,17 +6,18 @@ export default function Projects() {
 	return (
 		<section>
 			<div className="my-10 mb-16">
-				<h1 className="text-5xl mb-5">
-					Things I’ve made trying to put my dent in the universe.
+				<h1 className="text-4xl mb-5 tracking-tight">
+					Here are some projects I've created while pursuing my journey as a
+					front-end developer.
 				</h1>
-				<p>
-					I’ve worked on tons of little projects over the years but these are
-					the ones that I’m most proud of. Many of them are open-source, so if
-					you see something that piques your interest, check out the code and
-					contribute if you have ideas for how it can be improved.
+				<p className="text-zinc-400 text-justify">
+					I've worked on numerous projects over the years, but these are the
+					ones I'm most proud of. If you find something that catches your eye,
+					feel free to explore the code and don't hesitate to contact me if you
+					have any questions or would like to discuss how it can be implemented.
 				</p>
 			</div>
-			<ul className="grid grid-cols-2 gap-5 md:grid-cols-3">
+			<ul className="grid grid-cols-2 gap-10 gap-y-10 md:grid-cols-3">
 				{arr.map((el) => (
 					<ProjectCard />
 				))}
