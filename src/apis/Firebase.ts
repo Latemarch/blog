@@ -42,9 +42,11 @@ export function onUserStateChange(callback: (user: IUser | undefined) => void) {
 			const { photoURL, uid, email, displayName } = user;
 			const sortedUser = { isAdmin, photoURL, uid, email, displayName };
 			const updatedUser = await isAdmin(sortedUser);
+			console.log("user login watching");
 			callback(updatedUser);
 		} else {
 			const updatedUser = undefined;
+			console.log("user logOut watching");
 			callback(updatedUser);
 		}
 	});

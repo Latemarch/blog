@@ -3,10 +3,11 @@ import { logIn, logOut } from "../apis/Firebase";
 import { IAuth } from "../redux/slices/userSlice";
 import Nav from "./Nav";
 
-const buttons = ["About", "Articles", "Projects", "Edit"];
+const buttons = ["About", "Articles", "Projects"];
 
 export default function Header() {
 	const { user } = useSelector<IAuth>((state) => state.user) as IAuth;
+	user?.isAdmin && !buttons.includes("Edit") && buttons.push("Edit");
 	return (
 		<header className="z-10 flex justify-center h-24 w-full items-center">
 			<Nav buttons={buttons} />

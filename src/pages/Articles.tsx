@@ -7,7 +7,6 @@ export default function Articles() {
 	const {
 		postQuery: { data: posts, isLoading },
 	} = usePost();
-	posts && console.log("Articles", posts);
 	return (
 		<>
 			<div className="my-20 ">

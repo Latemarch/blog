@@ -12,7 +12,7 @@ export default function ProjectCard() {
 			<div className="relative group flex h-min-40">
 				<div className="absolute inset-0 z-0 bg-zinc-800/50 rounded-2xl opacity-0 md:transition group-hover:scale-110 group-hover:opacity-100"></div>
 				<div className="relative z-10 bg-gry-400">
-					<div className="grid grid-cols-4">
+					<div className="flex flex-wrap">
 						{/* <Icon img={logoReact} />
 						<Icon img={logoTs} /> */}
 						<Icon img={logoQuery} />

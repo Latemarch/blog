@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectCard from "../components/ProjectCard";
+import { v4 as uuid } from "uuid";
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 export default function Projects() {
@@ -19,7 +20,7 @@ export default function Projects() {
 			</div>
 			<ul className="grid grid-cols-2 gap-10 gap-y-10 md:grid-cols-3">
 				{arr.map((el) => (
-					<ProjectCard />
+					<ProjectCard key={uuid()} />
 				))}
 			</ul>
 		</section>
