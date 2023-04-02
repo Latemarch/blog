@@ -8,7 +8,7 @@ export default function Articles() {
 		postQuery: { data: posts, isLoading },
 	} = usePost();
 	return (
-		<>
+		<div className="pb-20">
 			<div className="my-20 ">
 				<h1 className="text-4xl mb-4 tracking-tight">
 					Writing on software stack, computer science,and project building.
@@ -23,6 +23,6 @@ export default function Articles() {
 				{posts &&
 					posts.map((post) => <ArticleCard key={post.id} post={post} />)}
 			</div>
-		</>
+		</div>
 	);
 }

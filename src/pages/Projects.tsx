@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 export default function Projects() {
 	return (
-		<section>
+		<section className="pb-20">
 			<div className="my-10 mb-16">
 				<h1 className="text-4xl mb-5 tracking-tight">
 					Here are some projects I've created while pursuing my journey as a

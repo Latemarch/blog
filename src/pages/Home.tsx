@@ -45,7 +45,7 @@ export default function Home() {
 					<p className="text-zinc-300 ml-2">Works</p>
 				</div>
 				<ul className="grid grid-cols-2 gap-10 gap-y-10 lg:grid-cols-3">
-					{[1, 2].map((el) => (
+					{[1, 2, 3, 5].map((el) => (
 						<ProjectCard key={uuid()} />
 					))}
 				</ul>
