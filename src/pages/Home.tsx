@@ -31,14 +31,15 @@ export default function Home() {
 				<AiOutlineMail />
 			</div>
 			<div className="my-20">
-				<div className="mx-2 md:ml-5 mb-4 border-b border-zinc-700/40 flex ">
-					Articles
-				</div>
-				{posts &&
-					posts
-						.slice(0, 3)
-						.map((post) => <ArticleCard key={post.id} post={post} />)}
+				<div className="mx-2 mb-4  flex ">Articles</div>
+				<ul className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+					{posts &&
+						posts
+							.slice(0, 3)
+							.map((post) => <ArticleCard key={post.id} post={post} />)}
+				</ul>
 			</div>
+
 			<div className="border border-zinc-700/40 rounded-2xl p-6 pt-2">
 				<div className="flex items-center mb-3">
 					<AiFillFolderOpen />
