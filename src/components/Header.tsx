@@ -20,13 +20,13 @@ export default function Header() {
 					<Icon img={logoReact} />
 				</Link>
 			</div>
-			<div className="fixed left-0 opacity-0">
+			{/* <div className="fixed left-0 opacity-0">
 				{!user ? (
 					<Button button="LogIn" onClick={logIn} />
 				) : (
 					<Button button="LogOut" onClick={logOut} />
 				)}
-			</div>
+			</div> */}
 		</header>
 	);
 }
