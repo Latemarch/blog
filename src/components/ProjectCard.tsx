@@ -3,6 +3,7 @@ import logoReact from "../svgs/react.svg";
 import logoTs from "../svgs/ts.svg";
 import logoQuery from "../svgs/query.svg";
 import logoRedux from "../svgs/redux.svg";
+import logoFirebase from "../svgs/firebase.svg";
 import { FiLink } from "react-icons/fi";
 import Icon from "./Icon";
 
@@ -17,8 +18,9 @@ export default function ProjectCard() {
 						<Icon img={logoTs} /> */}
 						<Icon img={logoQuery} />
 						<Icon img={logoRedux} />
+						<Icon img={logoFirebase} />
 					</div>
-					<p className="font-bold text-lg">Planetaria</p>
+					<p className="font-bold text-lg mt-4">Planetaria</p>
 					<span className="text-sm text-zinc-400 ">
 						Creating technology to empower ciilians to explore space on their
 						own terms.

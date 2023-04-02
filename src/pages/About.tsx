@@ -7,7 +7,7 @@ export default function About() {
 				<img src={logo} />
 			</div>
 			<div className="lg:order-first lg:row-span-2">
-				<h1 className="font-bold text-4xl tracking-tight">
+				<h1 className="font-bold text-4xl tracking-tight mb-20">
 					I’m Spencer Sharp. I live in New York City, where I design the future.
 				</h1>
 				<div className="space-y-7 text-justify">
@@ -31,17 +31,7 @@ export default function About() {
 					<li className="fex">
 						<a className="flex items-center">
 							<BsGithub />
-							<p className="ml-4">follow me</p>
-						</a>
-					</li>
-					<li className="flex">
-						<a className="">
-							<p>follow me</p>
-						</a>
-					</li>
-					<li className="flex">
-						<a className="">
-							<p>follow me</p>
+							<p className="ml-4">git-hub</p>
 						</a>
 					</li>
 				</ul>

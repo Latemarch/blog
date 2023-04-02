@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 
-export default function ScrollHeader({
+export default function HeaderScroll({
 	height,
 	children,
 }: {
@@ -35,7 +35,9 @@ export default function ScrollHeader({
 	};
 	return (
 		<div
-			className={`${isFixed ? "fixed" : "absolute"} flex`}
+			className={`${
+				isFixed ? "fixed" : "absolute"
+			} flex w-full justify-center z-50`}
 			style={headerStyle}
 		>
 			{children}

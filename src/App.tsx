@@ -6,7 +6,7 @@ import { onUserStateChange } from "./apis/Firebase";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import ScrollHeader from "./components/ScrollHeader";
+import HeaderScroll from "./components/HeaderScroll";
 import { updateUser } from "./redux/slices/userSlice";
 
 const queryClient = new QueryClient();
@@ -18,13 +18,13 @@ function App() {
 		});
 	}, []);
 	return (
-		<div className="relative flex flex-col items-center px-8 h-screen">
-			<ScrollHeader height={100}>
+		<div className="relative flex flex-col items-center px-8 h-screen ">
+			<HeaderScroll height={100}>
 				<Header />
-			</ScrollHeader>
+			</HeaderScroll>
 			<div className="main w-full h-full  sm:px-8 mt-20 sm:mt-32 ">
 				<div className="mx-auto max-w-7xl lg:px-8  h-full ">
-					<div className="mx-auto max-w-2xl lg:max-w-5xl text-white h-full">
+					<div className="mx-auto max-w-2xl lg:max-w-5xl text-white h-full ">
 						<QueryClientProvider client={queryClient}>
 							<Outlet />
 						</QueryClientProvider>
