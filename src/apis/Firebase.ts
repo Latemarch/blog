@@ -85,7 +85,7 @@ export type IArticle = {
 	author: string;
 	title: string;
 	body: string;
-	createdAt: string;
+	createdAt: number;
 	tag?: string[];
 };
 

@@ -8,7 +8,7 @@ interface IProp {
 }
 const defaultArticle = {
 	id: uuid(),
-	createdAt: formatDate(new Date()),
+	createdAt: Date.now(),
 	author: "",
 	title: "",
 	body: "",
@@ -37,27 +37,4 @@ export default function EditContainer({ id }: IProp) {
 			setMarkDown={setMarkDown}
 		/>
 	);
-}
-
-export function formatDate(date: Date) {
-	const monthNames = [
-		"January",
-		"February",
-		"March",
-		"April",
-		"May",
-		"June",
-		"July",
-		"August",
-		"September",
-		"October",
-		"November",
-		"December",
-	];
-
-	const day = date.getDate();
-	const monthIndex = date.getMonth();
-	const year = date.getFullYear();
-
-	return `${monthNames[monthIndex]} ${day}, ${year}`;
 }

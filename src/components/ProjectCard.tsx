@@ -1,6 +1,3 @@
-import React from "react";
-import logoReact from "../svgs/react.svg";
-import logoTs from "../svgs/ts.svg";
 import logoQuery from "../svgs/query.svg";
 import logoRedux from "../svgs/redux.svg";
 import logoFirebase from "../svgs/firebase.svg";

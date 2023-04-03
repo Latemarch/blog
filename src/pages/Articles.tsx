@@ -21,7 +21,9 @@ export default function Articles() {
 			<div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
 				{isLoading && <p>Loading...</p>}
 				{posts &&
-					posts.map((post) => <ArticleCard key={post.id} post={post} />)}
+					posts
+						.sort((a, b) => b.createdAt - a.createdAt)
+						.map((post) => <ArticleCard key={post.id} post={post} />)}
 			</div>
 		</div>
 	);
