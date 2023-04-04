@@ -1,4 +1,4 @@
-import ArticleCard from "../components/PostCard";
+import PostCard from "../components/PostCard";
 import ProjectCard from "../components/ProjectCard";
 import usePost from "../hooks/usePost";
 import { v4 as uuid } from "uuid";
@@ -31,12 +31,12 @@ export default function Home() {
 				<AiOutlineMail />
 			</div>
 			<div className="my-20">
-				<div className="mx-2 mb-4  flex ">Articles</div>
+				<div className="mx-2 mb-4  flex ">Posts</div>
 				<ul className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
 					{posts &&
 						posts
 							.slice(0, 3)
-							.map((post) => <ArticleCard key={post.id} post={post} />)}
+							.map((post) => <PostCard key={post.id} post={post} />)}
 				</ul>
 			</div>
 

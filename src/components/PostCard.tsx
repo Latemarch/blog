@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { IPost } from "../apis/Firebase";
 import { BsChevronRight } from "react-icons/bs";
@@ -22,7 +21,7 @@ export default function PostCard({ post }: IProp) {
 							<span className="line-clamp-3 text-zinc-400">{post.body}</span>
 						</div>
 						<div className="pt-2 flex items-center text-green-300 ">
-							<p className="">Read article &nbsp; </p>
+							<p className="">Read post&nbsp; </p>
 							<BsChevronRight className="text-sm" />
 						</div>
 					</div>

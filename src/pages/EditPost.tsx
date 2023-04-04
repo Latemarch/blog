@@ -9,7 +9,7 @@ interface IProp {
 	handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
 	setMarkDown(e: any): void;
 }
-export default function Edit({
+export default function EditPost({
 	post,
 	markdown,
 	handleSubmit,

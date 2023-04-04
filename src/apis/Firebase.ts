@@ -42,7 +42,6 @@ export function onUserStateChange(callback: (user: IUser | undefined) => void) {
 			const { photoURL, uid, email, displayName } = user;
 			const sortedUser = { isAdmin, photoURL, uid, email, displayName };
 			const updatedUser = await isAdmin(sortedUser);
-			console.log("user login watching");
 			callback(updatedUser);
 		} else {
 			const updatedUser = undefined;
@@ -61,8 +60,8 @@ export async function isAdmin(user: IUser) {
 		});
 }
 
-export function addPost(post: IPost) {
-	return set(ref(database, `posts/${post.id}`), post);
+export function addItem(item: IPost | IProj) {
+	return set(ref(database, `${item.category}/${item.id}`), item);
 }
 
 export async function getPosts(): Promise<IPost[]> {
@@ -79,13 +78,27 @@ export async function getPost(id: string | undefined): Promise<IPost> {
 	const post = snapshot.val();
 	return post;
 }
-export async function updatePost(id: string, newData: any) {
-	return update(dbRef, { [`posts/${id}`]: newData })
+export async function updateItem(id: string, newData: any) {
+	return update(dbRef, { [`${newData.category}/${id}`]: newData })
 		.then(() => console.log("updated"))
 		.catch(console.log);
 }
 
+type stacks = "react" | "ts" | "redux" | "fb" | "query";
+type link = {
+	[key: string]: string;
+};
+export interface IProj {
+	category: string;
+	id: string;
+	title: string;
+	createdAt: number;
+	stacks: stacks[];
+	detail: string;
+	links: link[];
+}
 export type IPost = {
+	category: string;
 	id: string;
 	author: string;
 	title: string;

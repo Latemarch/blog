@@ -6,12 +6,14 @@ import logoReact from "../svgs/react.svg";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import { useEffect, useState } from "react";
 
-const buttons = ["About", "Articles", "Projects"];
+const list = ["About", "Posts", "Projects"];
 
 export default function Header() {
 	const { user } = useSelector<IAuth>((state) => state.user) as IAuth;
-	user?.isAdmin && !buttons.includes("Edit") && buttons.push("Edit");
+	const [buttons, setButtons] = useState<string[]>(list);
+
 	return (
 		<header className="relative flex justify-center h-20 w-full items-center mx-8 max-w-2xl sm:mx-16 lg:mx-24 lg:max-w-5xl ">
 			<Nav buttons={buttons} />
@@ -22,9 +24,9 @@ export default function Header() {
 			</div>
 			<div className="fixed left-0 opacity-0">
 				{!user ? (
-					<Button button="LogIn" onClick={logIn} />
+					<Button name="LogIn" onClick={logIn} />
 				) : (
-					<Button button="LogOut" onClick={logOut} />
+					<Button name="LogOut" onClick={logOut} />
 				)}
 			</div>
 		</header>

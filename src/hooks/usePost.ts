@@ -1,9 +1,15 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getPosts } from "../apis/Firebase";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { addItem, getPosts, IPost } from "../apis/Firebase";
 
 export default function usePost() {
 	const queryClient = useQueryClient();
 	const postQuery = useQuery(["posts"], getPosts, {});
 
-	return { postQuery };
+	const addPost = useMutation((item: IPost) => addItem(item), {
+		onSuccess: () => {
+			queryClient.invalidateQueries(["posts"]);
+		},
+	});
+
+	return { postQuery, addPost };
 }

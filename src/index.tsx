@@ -11,8 +11,10 @@ import Post from "./pages/Post";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import EditContainer from "./containers/EditContainer";
+import EditContainer from "./containers/EditPostContainer";
 import About from "./pages/About";
+import EditProject from "./pages/EditProject";
+import EditPostContainer from "./containers/EditPostContainer";
 
 const router = createBrowserRouter([
 	{
@@ -22,10 +24,11 @@ const router = createBrowserRouter([
 			{ index: true, element: <Home /> },
 			{ path: "/about", element: <About /> },
 			{ path: "/Projects", element: <Projects /> },
-			{ path: "/articles", element: <Posts /> },
-			{ path: "/articles/:id", element: <Post /> },
-			{ path: "/edit", element: <EditContainer /> },
-			{ path: "/edit/:id", element: <EditContainer /> },
+			{ path: "/posts", element: <Posts /> },
+			{ path: "/posts/:id", element: <Post /> },
+			{ path: "/edit/post", element: <EditPostContainer /> },
+			{ path: "/edit/post/:id", element: <EditPostContainer /> },
+			{ path: "/edit/project/", element: <EditProject /> },
 		],
 	},
 ]);

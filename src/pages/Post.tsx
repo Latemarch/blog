@@ -7,7 +7,7 @@ import Button from "../components/Button";
 import { formatDate } from "../components/PostCard";
 import { IAuth } from "../redux/slices/userSlice";
 
-export default function Article() {
+export default function Post() {
 	const { user } = useSelector<IAuth>((state) => state.user) as IAuth;
 	const { id } = useParams();
 	const navigate = useNavigate();
@@ -22,10 +22,10 @@ export default function Article() {
 						<p className="m-2">{formatDate(post.createdAt)}</p>
 						{user?.isAdmin && (
 							<div className="flex">
-								<Link to={`/edit/${id}`}>
-									<Button button={"Edit"} />
+								<Link to={`/edit/post/${id}`}>
+									<Button name={"Edit"} />
 								</Link>
-								<Button button={"Delete"} />
+								<Button name={"Delete"} />
 							</div>
 						)}
 					</div>
@@ -39,7 +39,7 @@ export default function Article() {
 			)}
 			<div className="flex justify-end">
 				<div className="flex items-center bg-Dtab my-5 rounded-md">
-					<Button button="목록으로" onClick={() => navigate("/articles")} />
+					<Button name="목록으로" onClick={() => navigate("/posts")} />
 				</div>
 			</div>
 		</article>
