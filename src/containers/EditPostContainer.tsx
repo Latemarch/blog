@@ -23,7 +23,8 @@ export default function EditPostContainer() {
 		enabled: !!id,
 	});
 	const { addPost } = usePost();
-	const initialPost = prevPost ? prevPost : defaultPost;
+	console.log(prevPost?.id);
+	const initialPost = prevPost?.id ? prevPost : defaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
 	const [markdown, setMarkDown] = useState<string>("");
 	const navigate = useNavigate();

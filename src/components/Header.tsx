@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { logIn, logOut } from "../apis/Firebase";
 import { IAuth } from "../redux/slices/userSlice";
 import Icon from "./Icon";
-import logoReact from "../svgs/react.svg";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
 import Button from "./Button";
@@ -19,7 +18,7 @@ export default function Header() {
 			<Nav buttons={buttons} />
 			<div className="absolute flex left-0 h-16 items-center justify-center ">
 				<Link to="/">
-					<Icon img={logoReact} />
+					<Icon name={"React"} />
 				</Link>
 			</div>
 			<div className="fixed left-0 opacity-0">

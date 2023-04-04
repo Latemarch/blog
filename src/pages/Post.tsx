@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getPost } from "../apis/Firebase";
 import Button from "../components/Button";
 import { formatDate } from "../components/PostCard";
+import usePost from "../hooks/usePost";
 import { IAuth } from "../redux/slices/userSlice";
 
 export default function Post() {
@@ -12,6 +13,17 @@ export default function Post() {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const { data: post, isLoading } = useQuery(["posts", id], () => getPost(id));
+	const { removePost } = usePost();
+	const onDelete = () => {
+		const isConfirmed = window.confirm("Are you sure you want to proceed?");
+		if (isConfirmed) {
+			// 실행할 작업을 여기에 작성합니다.
+			post && removePost.mutate(post);
+			navigate("/posts");
+		} else {
+			console.log("User clicked Cancel.");
+		}
+	};
 	return (
 		<article className="m-0 lg:m-20 pb-20">
 			{isLoading && <p>isLoading..</p>}
@@ -22,10 +34,11 @@ export default function Post() {
 						<p className="m-2">{formatDate(post.createdAt)}</p>
 						{user?.isAdmin && (
 							<div className="flex">
-								<Link to={`/edit/post/${id}`}>
-									<Button name={"Edit"} />
-								</Link>
-								<Button name={"Delete"} />
+								<Button
+									name={"Edit"}
+									onClick={() => navigate(`/edit/post/${id}`)}
+								/>
+								<Button name={"Delete"} onClick={onDelete} />
 							</div>
 						)}
 					</div>

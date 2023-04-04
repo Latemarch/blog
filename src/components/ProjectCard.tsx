@@ -1,6 +1,3 @@
-import logoQuery from "../svgs/query.svg";
-import logoRedux from "../svgs/redux.svg";
-import logoFirebase from "../svgs/firebase.svg";
 import { FiLink } from "react-icons/fi";
 import Icon from "./Icon";
 
@@ -11,11 +8,7 @@ export default function ProjectCard() {
 				<div className="absolute inset-0 z-0 bg-zinc-800/50 rounded-2xl opacity-0 md:transition group-hover:scale-110 group-hover:opacity-100"></div>
 				<div className="relative z-10 bg-gry-400">
 					<div className="flex flex-wrap">
-						{/* <Icon img={logoReact} />
-						<Icon img={logoTs} /> */}
-						<Icon img={logoQuery} />
-						<Icon img={logoRedux} />
-						<Icon img={logoFirebase} />
+						<Icon name={"React"} />
 					</div>
 					<p className="font-bold text-lg mt-4">Planetaria</p>
 					<span className="text-sm text-zinc-400 ">

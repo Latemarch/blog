@@ -1,4 +1,12 @@
-import { child, get, getDatabase, ref, set, update } from "firebase/database";
+import {
+	child,
+	get,
+	getDatabase,
+	ref,
+	remove,
+	set,
+	update,
+} from "firebase/database";
 import {
 	getAuth,
 	signInWithPopup,
@@ -9,6 +17,7 @@ import {
 	NextFn,
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { v4 as uuid } from "uuid";
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -61,7 +70,13 @@ export async function isAdmin(user: IUser) {
 }
 
 export function addItem(item: IPost | IProj) {
-	return set(ref(database, `${item.category}/${item.id}`), item);
+	return set(
+		ref(database, `${item.category}/${item.id}`), //
+		{
+			...item,
+			id: uuid(),
+		}
+	);
 }
 
 export async function getPosts(): Promise<IPost[]> {
@@ -83,11 +98,11 @@ export async function updateItem(id: string, newData: any) {
 		.then(() => console.log("updated"))
 		.catch(console.log);
 }
+export function removeItem(item: IPost | IProj) {
+	return remove(ref(database, `${item.category}/${item.id}`));
+}
 
-type stacks = "react" | "ts" | "redux" | "fb" | "query";
-type link = {
-	[key: string]: string;
-};
+type stacks = "react" | "ts" | "redux" | "fb" | "query" | string;
 export interface IProj {
 	category: string;
 	id: string;
@@ -95,7 +110,8 @@ export interface IProj {
 	createdAt: number;
 	stacks: stacks[];
 	detail: string;
-	links: link[];
+	git?: string;
+	published?: string;
 }
 export type IPost = {
 	category: string;
