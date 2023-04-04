@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-import { getPosts, IArticle } from "../apis/Firebase";
-import ArticleCard from "../components/ArticleCard";
+import PostCard from "../components/PostCard";
 import usePost from "../hooks/usePost";
 
-export default function Articles() {
+export default function Posts() {
 	const {
 		postQuery: { data: posts, isLoading },
 	} = usePost();
@@ -23,7 +21,7 @@ export default function Articles() {
 				{posts &&
 					posts
 						.sort((a, b) => b.createdAt - a.createdAt)
-						.map((post) => <ArticleCard key={post.id} post={post} />)}
+						.map((post) => <PostCard key={post.id} post={post} />)}
 			</div>
 		</div>
 	);

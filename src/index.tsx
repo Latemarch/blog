@@ -6,10 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Articles from "./pages/Articles";
-import Article from "./pages/Article";
+import Posts from "./pages/Posts";
+import Post from "./pages/Post";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Edit from "./pages/Edit";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import EditContainer from "./containers/EditContainer";
@@ -23,9 +22,10 @@ const router = createBrowserRouter([
 			{ index: true, element: <Home /> },
 			{ path: "/about", element: <About /> },
 			{ path: "/Projects", element: <Projects /> },
-			{ path: "/articles", element: <Articles /> },
-			{ path: "/articles/:id", element: <Article /> },
+			{ path: "/articles", element: <Posts /> },
+			{ path: "/articles/:id", element: <Post /> },
 			{ path: "/edit", element: <EditContainer /> },
+			{ path: "/edit/:id", element: <EditContainer /> },
 		],
 	},
 ]);
@@ -37,7 +37,7 @@ root.render(
 	<React.StrictMode>
 		<HelmetProvider>
 			<Helmet>
-				<html className="dark" />
+				<html className="dark" data-color-mode="dark" />
 				<body className="flex h-full flex-col bg-red-200 dark:bg-Dbg" />
 			</Helmet>
 		</HelmetProvider>

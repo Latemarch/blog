@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { IArticle } from "../apis/Firebase";
+import { IPost } from "../apis/Firebase";
 import { BsChevronRight } from "react-icons/bs";
 
 interface IProp {
-	post: IArticle;
+	post: IPost;
 }
-export default function ArticleCard({ post }: IProp) {
+export default function PostCard({ post }: IProp) {
 	return (
 		<Link to={`${post.id}`}>
 			<article className="relative group flex flex-col bg-red-90 m-2 mb-10 h-40 md:h-36 md:flex-row">
@@ -32,7 +32,7 @@ export default function ArticleCard({ post }: IProp) {
 	);
 }
 
-function formatDate(timestamp: number) {
+export function formatDate(timestamp: number) {
 	const date = new Date(timestamp);
 
 	const monthNames = [

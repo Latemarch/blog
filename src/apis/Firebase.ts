@@ -1,4 +1,4 @@
-import { child, get, getDatabase, ref, set } from "firebase/database";
+import { child, get, getDatabase, ref, set, update } from "firebase/database";
 import {
 	getAuth,
 	signInWithPopup,
@@ -61,26 +61,31 @@ export async function isAdmin(user: IUser) {
 		});
 }
 
-export function addPost(article: IArticle) {
-	set(ref(database, `posts/${article.id}`), article);
+export function addPost(post: IPost) {
+	return set(ref(database, `posts/${post.id}`), post);
 }
 
-export async function getPosts(): Promise<IArticle[]> {
+export async function getPosts(): Promise<IPost[]> {
 	const snapshot = await get(child(dbRef, "posts"));
 	if (snapshot.exists()) {
-		const data: IArticle[] = Object.values(snapshot.val());
+		const data: IPost[] = Object.values(snapshot.val());
 		return data;
 	}
 	return [];
 }
 
-export async function getPost(id: string | undefined): Promise<IArticle> {
+export async function getPost(id: string | undefined): Promise<IPost> {
 	const snapshot = await get(child(dbRef, `posts/${id}`));
 	const post = snapshot.val();
 	return post;
 }
+export async function updatePost(id: string, newData: any) {
+	return update(dbRef, { [`posts/${id}`]: newData })
+		.then(() => console.log("updated"))
+		.catch(console.log);
+}
 
-export type IArticle = {
+export type IPost = {
 	id: string;
 	author: string;
 	title: string;

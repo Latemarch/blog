@@ -1,4 +1,4 @@
-import ArticleCard from "../components/ArticleCard";
+import ArticleCard from "../components/PostCard";
 import ProjectCard from "../components/ProjectCard";
 import usePost from "../hooks/usePost";
 import { v4 as uuid } from "uuid";
