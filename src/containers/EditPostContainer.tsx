@@ -47,7 +47,7 @@ export default function EditPostContainer() {
 		} else {
 			addPost.mutate(post, {
 				onSuccess: () => {
-					navigate("/posts/");
+					navigate("/posts");
 				},
 			});
 		}

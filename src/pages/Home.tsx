@@ -8,11 +8,15 @@ import {
 	AiOutlineMail,
 } from "react-icons/ai";
 import { BsGithub, BsTwitter } from "react-icons/bs";
+import useProject from "../hooks/useProject";
 
 export default function Home() {
 	const {
-		postQuery: { data: posts, isLoading },
+		postQuery: { data: posts },
 	} = usePost();
+	const {
+		projectQuery: { data: projects },
+	} = useProject();
 	return (
 		<div className="pb-20">
 			<h1 className="text-4xl mb-4">
@@ -45,10 +49,12 @@ export default function Home() {
 					<AiFillFolderOpen />
 					<p className="text-zinc-300 ml-2">Works</p>
 				</div>
-				<ul className="grid grid-cols-2 gap-10 gap-y-10 lg:grid-cols-3">
-					{/* {[1, 2, 3, 5].map((el) => (
-						<ProjectCard key={uuid()} />
-					))} */}
+				<ul className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+					{/* <ul className="relative flex flex-col flex-wrap"> */}
+					{projects &&
+						projects.map((project) => (
+							<ProjectCard key={uuid()} project={project} />
+						))}
 				</ul>
 			</div>
 		</div>

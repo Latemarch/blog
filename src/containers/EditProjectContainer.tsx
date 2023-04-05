@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IProj } from "../apis/Firebase";
 import useProject from "../hooks/useProject";
 import { useNavigate, useParams } from "react-router-dom";
@@ -16,14 +16,18 @@ const defaultProject: IProj = {
 };
 export default function EditProjectContainer() {
 	const { id } = useParams();
-	const [project, setProject] = useState(defaultProject);
-	const [stacks, setStacks] = useState<string[]>([]);
 	const navigate = useNavigate();
 	const {
 		addProject,
 		updateProject,
 		getProject: { data: prevProj, isSuccess },
 	} = useProject(id);
+	const initialProj = isSuccess ? prevProj : defaultProject;
+	const [project, setProject] = useState<IProj>(initialProj);
+	const [stacks, setStacks] = useState<string[]>([]);
+	useEffect(() => {
+		setStacks(defaultProject.stacks);
+	}, [isSuccess]);
 	const handleStacks = (e: React.MouseEvent<HTMLDivElement>) => {
 		const { name } = e.currentTarget.dataset;
 		if (name)
@@ -53,7 +57,6 @@ export default function EditProjectContainer() {
 				},
 			});
 		}
-		console.log(project, stacks);
 	};
 	const getIconStyle = (stack: string): React.CSSProperties => {
 		return { filter: stacks.includes(stack) ? "brightness(1.5)" : undefined };

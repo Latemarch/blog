@@ -15,10 +15,6 @@ export default function useProject(id?: string) {
 		staleTime: 1000 * 6 * 5,
 	});
 
-	// const getProject = useQuery(["projects", id], () => getItem(id, "projects"), {
-	// 	staleTime: 1000 * 6 * 5,
-	// });
-
 	const getProject = useQuery(["projects", id], () => getItem(id, "projects"), {
 		staleTime: 1000 * 60 * 5,
 	});
@@ -28,12 +24,14 @@ export default function useProject(id?: string) {
 			queryClient.invalidateQueries(["projects"]);
 		},
 	});
+
 	const updateProject = useMutation((proj: IProj) => updateItem(proj), {
 		onSuccess: (_, proj) => {
 			queryClient.invalidateQueries(["projects"]);
 			queryClient.invalidateQueries(["projects", proj.id]);
 		},
 	});
+
 	const removeProject = useMutation((item: IProj) => removeItem(item), {
 		onSuccess: () => {
 			queryClient.invalidateQueries(["projects"]);

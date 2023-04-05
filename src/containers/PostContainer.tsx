@@ -12,13 +12,13 @@ export default function PostContainer() {
 		removePost,
 		getPost: { data: post, isLoading },
 	} = usePost(id);
-	const onDelete = () => {
-		const isConfirmed = window.confirm("Are you sure you want to proceed?");
-		if (isConfirmed) {
+	const onDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+		const isConfirmed = e.currentTarget.id;
+		if (isConfirmed === "Delete") {
 			post && removePost.mutate(post);
 			navigate("/posts");
 		} else {
-			console.log("User clicked Cancel.");
+			console.log("Canceled.");
 		}
 	};
 	return (

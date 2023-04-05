@@ -71,7 +71,6 @@ export async function isAdmin(user: IUser) {
 }
 
 export function addItem(item: IPost | IProj) {
-	console.log("firebase", item.category, item.id);
 	const id = uuid();
 
 	return set(
@@ -99,7 +98,6 @@ export async function getItem(
 ): Promise<any> {
 	const snapshot = await get(child(dbRef, `${category}/${id}`));
 	const item = snapshot.val();
-	console.log("firebase", item, id);
 	return item;
 }
 export async function updateItem(newData: any) {
@@ -111,7 +109,6 @@ export function removeItem(item: IPost | IProj) {
 	return remove(ref(database, `${item.category}/${item.id}`));
 }
 
-type stacks = "react" | "ts" | "redux" | "fb" | "query" | string;
 export interface IProj {
 	category: string;
 	id: string;

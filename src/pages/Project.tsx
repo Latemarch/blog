@@ -51,7 +51,7 @@ export default function Project() {
 			)}
 			<div className="flex justify-end">
 				<div className="flex items-center bg-Dtab my-5 rounded-md">
-					<Button name="목록으로" onClick={() => navigate("/posts")} />
+					<Button name="목록으로" onClick={() => navigate("/projects")} />
 				</div>
 			</div>
 		</article>

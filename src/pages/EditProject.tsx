@@ -59,7 +59,6 @@ export default function EditProject({
 					placeholder="detail"
 					value={project.detail}
 					onChange={handleInput}
-					required
 				/>
 				<div className="flex justify-end">
 					<button className="border mt-4 p-2 rounded-lg bg-Dtab">submit</button>

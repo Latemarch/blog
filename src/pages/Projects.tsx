@@ -1,11 +1,10 @@
-import React from "react";
 import ProjectCard from "../components/ProjectCard";
 import { v4 as uuid } from "uuid";
 import useProject from "../hooks/useProject";
 
 export default function Projects() {
 	const {
-		projectQuery: { data: projects, isLoading },
+		projectQuery: { data: projects },
 	} = useProject();
 	return (
 		<section className="pb-20">
@@ -21,7 +20,8 @@ export default function Projects() {
 					have any questions or would like to discuss how it can be implemented.
 				</p>
 			</div>
-			<ul className="grid grid-cols-2 gap-10 gap-y-10 md:grid-cols-3">
+			<ul className="grid grid-cols-2 bg-gra-200 items-center gap-10 gap-y-10 md:grid-cols-3 ">
+				{/* <ul className="flex justify-between sm:justify-start flex-wrap px-4 sm:px-0"> */}
 				{projects &&
 					projects.map((project) => (
 						<ProjectCard key={uuid()} project={project} />
