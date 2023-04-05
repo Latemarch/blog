@@ -8,7 +8,7 @@ interface IProp {
 export default function PostCard({ post }: IProp) {
 	return (
 		<Link to={`${post.id}`}>
-			<article className="relative group flex flex-col bg-red-90 m-2 mb-10 h-40 md:h-36 md:flex-row">
+			<li className="relative group flex flex-col bg-red-90 m-2 mb-10 h-40 md:h-36 md:flex-row">
 				<div className="flex md:w-1/4 md:pl-3 text-zinc-400 max-w-[200px]">
 					<p className="md:hidden font-bold mr-3 ">|</p>
 					<p>{formatDate(post.createdAt)}</p>
@@ -26,7 +26,7 @@ export default function PostCard({ post }: IProp) {
 						</div>
 					</div>
 				</div>
-			</article>
+			</li>
 		</Link>
 	);
 }

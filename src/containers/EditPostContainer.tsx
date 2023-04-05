@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { v4 as uuid } from "uuid";
 import { useEffect, useState } from "react";
-import { getPost, IPost, updateItem } from "../apis/Firebase";
+import { getItem, IPost } from "../apis/Firebase";
 import { useNavigate, useParams } from "react-router-dom";
 import EditPost from "../pages/EditPost";
 import Button from "../components/Button";
@@ -9,8 +8,8 @@ import usePost from "../hooks/usePost";
 
 const defaultPost: IPost = {
 	category: "posts",
-	id: uuid(),
-	createdAt: Date.now(),
+	id: "",
+	createdAt: 0,
 	author: "",
 	title: "",
 	body: "",
@@ -19,18 +18,19 @@ const defaultPost: IPost = {
 
 export default function EditPostContainer() {
 	const { id } = useParams();
-	const { data: prevPost } = useQuery<IPost>(["posts", id], () => getPost(id), {
-		enabled: !!id,
-	});
-	const { addPost } = usePost();
-	console.log(prevPost?.id);
+	const {
+		addPost,
+		updatePost,
+		getPost: { data: prevPost, isSuccess },
+	} = usePost(id);
+	useEffect(() => {
+		prevPost && setMarkDown(prevPost.body);
+	}, [isSuccess]);
 	const initialPost = prevPost?.id ? prevPost : defaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
 	const [markdown, setMarkDown] = useState<string>("");
 	const navigate = useNavigate();
-	useEffect(() => {
-		prevPost && setMarkDown(prevPost.body);
-	}, []);
+
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setPost((prev) => ({ ...prev, [name]: value }));
@@ -39,11 +39,15 @@ export default function EditPostContainer() {
 		event.preventDefault();
 		post.body = markdown;
 		if (id) {
-			updateItem(id, post).then(() => navigate(`/posts/${post.id}`));
+			updatePost.mutate(post, {
+				onSuccess: () => {
+					navigate(`/posts/${id}`);
+				},
+			});
 		} else {
 			addPost.mutate(post, {
 				onSuccess: () => {
-					navigate(`/posts/${post.id}`);
+					navigate("/posts/");
 				},
 			});
 		}

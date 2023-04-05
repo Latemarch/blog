@@ -1,9 +1,12 @@
 import React from "react";
 import ProjectCard from "../components/ProjectCard";
 import { v4 as uuid } from "uuid";
+import useProject from "../hooks/useProject";
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 export default function Projects() {
+	const {
+		projectQuery: { data: projects, isLoading },
+	} = useProject();
 	return (
 		<section className="pb-20">
 			<div className="my-10 mb-16">
@@ -19,9 +22,10 @@ export default function Projects() {
 				</p>
 			</div>
 			<ul className="grid grid-cols-2 gap-10 gap-y-10 md:grid-cols-3">
-				{arr.map((el) => (
-					<ProjectCard key={uuid()} />
-				))}
+				{projects &&
+					projects.map((project) => (
+						<ProjectCard key={uuid()} project={project} />
+					))}
 			</ul>
 		</section>
 	);

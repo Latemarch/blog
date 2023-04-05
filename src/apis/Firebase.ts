@@ -18,10 +18,11 @@ import {
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { v4 as uuid } from "uuid";
+import { iconName } from "../components/Icon";
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-	// authDomain: "blog-eba42.firebaseapp.com",
+	// authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+	authDomain: "blog-eba42.firebaseapp.com",
 	// databaseURL: process.env.REACT_APP_FIREBASE_DB_UR,
 	databaseURL:
 		"https://blog-eba42-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -70,31 +71,39 @@ export async function isAdmin(user: IUser) {
 }
 
 export function addItem(item: IPost | IProj) {
+	console.log("firebase", item.category, item.id);
+	const id = uuid();
+
 	return set(
-		ref(database, `${item.category}/${item.id}`), //
+		ref(database, `${item.category}/${id}`), //
 		{
 			...item,
-			id: uuid(),
+			id,
+			createdAt: Date.now(),
 		}
 	);
 }
 
-export async function getPosts(): Promise<IPost[]> {
-	const snapshot = await get(child(dbRef, "posts"));
+export async function getItems(item: string): Promise<any[]> {
+	const snapshot = await get(child(dbRef, item));
 	if (snapshot.exists()) {
-		const data: IPost[] = Object.values(snapshot.val());
+		const data: any[] = Object.values(snapshot.val());
 		return data;
 	}
 	return [];
 }
 
-export async function getPost(id: string | undefined): Promise<IPost> {
-	const snapshot = await get(child(dbRef, `posts/${id}`));
-	const post = snapshot.val();
-	return post;
+export async function getItem(
+	id: string | undefined,
+	category: string
+): Promise<any> {
+	const snapshot = await get(child(dbRef, `${category}/${id}`));
+	const item = snapshot.val();
+	console.log("firebase", item, id);
+	return item;
 }
-export async function updateItem(id: string, newData: any) {
-	return update(dbRef, { [`${newData.category}/${id}`]: newData })
+export async function updateItem(newData: any) {
+	return update(dbRef, { [`${newData.category}/${newData.id}`]: newData })
 		.then(() => console.log("updated"))
 		.catch(console.log);
 }
@@ -108,7 +117,7 @@ export interface IProj {
 	id: string;
 	title: string;
 	createdAt: number;
-	stacks: stacks[];
+	stacks: iconName[];
 	detail: string;
 	git?: string;
 	published?: string;
