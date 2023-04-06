@@ -19,14 +19,9 @@ export default function Home() {
 	} = useProject();
 	return (
 		<div className="pb-20">
-			<h1 className="text-4xl mb-4">
-				Software designer, founder, and amateur astronaut.
-			</h1>
+			<h1 className="text-4xl mb-4">개발 블로그가 되고싶은 개발 공부 블로그</h1>
 			<span className="text-zinc-400">
-				I’m Spencer, a software designer and entrepreneur based in New York
-				City. I’m the founder and CEO of Planetaria, where we develop
-				technologies that empower regular people to explore space on their own
-				terms.
+				물리학과를 졸업 후 개발자가 되고자 개발공부를 시작하게 된 '다시학생'.
 			</span>
 			<div className="flex space-x-3 mt-6">
 				<BsGithub />
@@ -50,7 +45,6 @@ export default function Home() {
 					<p className="text-zinc-300 ml-2">Works</p>
 				</div>
 				<ul className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-					{/* <ul className="relative flex flex-col flex-wrap"> */}
 					{projects &&
 						projects.map((project) => (
 							<ProjectCard key={uuid()} project={project} />

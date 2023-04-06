@@ -7,13 +7,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Posts from "./pages/Posts";
-import Post from "./pages/Post";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import EditContainer from "./containers/EditPostContainer";
 import About from "./pages/About";
-import EditProject from "./pages/EditProject";
 import EditPostContainer from "./containers/EditPostContainer";
 import EditProjectContainer from "./containers/EditProjectContainer";
 import Project from "./pages/Project";
@@ -25,7 +22,7 @@ const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{ index: true, element: <Home /> },
-			{ path: "/about", element: <About /> },
+			// { path: "/about", element: <About /> },
 			{ path: "/projects", element: <Projects /> },
 			{ path: "/projects/:id", element: <Project /> },
 			{ path: "/Posts", element: <Posts /> },

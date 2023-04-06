@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 
-const list = ["About", "Posts", "Projects"];
+const list = ["Posts", "Projects"];
 
 export default function Header() {
 	const { user } = useSelector<IAuth>((state) => state.user) as IAuth;
