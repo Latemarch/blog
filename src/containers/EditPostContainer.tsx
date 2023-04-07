@@ -16,14 +16,16 @@ const defaultPost: IPost = {
 };
 export default function EditPostContainer() {
 	const { id } = useParams();
+	console.log(id);
 	const {
 		addPost,
 		updatePost,
 		getPost: { data: prevPost },
 	} = usePost(id);
 	useEffect(() => {
-		id && setMarkDown(prevPost.body);
-	}, [id]);
+		prevPost && setMarkDown(prevPost.body);
+		console.log(prevPost);
+	}, [prevPost]);
 	const initialPost = prevPost?.id ? prevPost : defaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
 	const [markdown, setMarkDown] = useState<string>("");

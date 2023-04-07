@@ -27,8 +27,8 @@ export default function EditProjectContainer() {
 	const [project, setProject] = useState<IProj>(initialProj);
 	const [stacks, setStacks] = useState<string[]>([]);
 	useEffect(() => {
-		id && setStacks(project.stacks);
-	}, []);
+		prevProj && setStacks(project.stacks);
+	}, [prevProj]);
 	const handleStacks = (e: React.MouseEvent<HTMLDivElement>) => {
 		const { name } = e.currentTarget.dataset;
 		if (name)
