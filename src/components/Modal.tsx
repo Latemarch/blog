@@ -1,10 +1,7 @@
-import React, { ReactNode } from "react";
 import Button from "./Button";
-interface IProp {
-	msg: string;
-	onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-export default function Modal({ msg, onClick }: IProp) {
+import { IModal } from "../type";
+
+export default function Modal({ msg, onClick }: IModal) {
 	return (
 		<>
 			<div className="fixed flex bg-gray-800 inset-0 items-center justify-center z-30 opacity-90 x-auto"></div>

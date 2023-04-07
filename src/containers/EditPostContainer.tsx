@@ -1,10 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { getItem, IPost } from "../apis/Firebase";
 import { useNavigate, useParams } from "react-router-dom";
 import EditPost from "../pages/EditPost";
 import Button from "../components/Button";
 import usePost from "../hooks/usePost";
+import { IPost } from "../type";
 
 const defaultPost: IPost = {
 	category: "posts",
@@ -15,17 +14,16 @@ const defaultPost: IPost = {
 	body: "",
 	tag: [],
 };
-
 export default function EditPostContainer() {
 	const { id } = useParams();
 	const {
 		addPost,
 		updatePost,
-		getPost: { data: prevPost, isSuccess },
+		getPost: { data: prevPost },
 	} = usePost(id);
 	useEffect(() => {
-		prevPost && setMarkDown(prevPost.body);
-	}, [isSuccess]);
+		id && setMarkDown(prevPost.body);
+	}, []);
 	const initialPost = prevPost?.id ? prevPost : defaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
 	const [markdown, setMarkDown] = useState<string>("");
@@ -55,10 +53,12 @@ export default function EditPostContainer() {
 
 	return (
 		<>
-			<div className="flex">
-				<Button name={"Post"} onClick={() => navigate("/edit/post")} />
-				<Button name={"Project"} onClick={() => navigate("/edit/project")} />
-			</div>
+			{!id && (
+				<div className="flex">
+					<Button name={"Post"} onClick={() => navigate("/edit/post")} />
+					<Button name={"Project"} onClick={() => navigate("/edit/project")} />
+				</div>
+			)}
 			<EditPost
 				post={post}
 				markdown={markdown}

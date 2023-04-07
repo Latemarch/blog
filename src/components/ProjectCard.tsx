@@ -1,11 +1,8 @@
 import { FiLink } from "react-icons/fi";
 import Icon, { iconName } from "./Icon";
-import { IProj } from "../apis/Firebase";
 import { Link } from "react-router-dom";
+import { IProp } from "../type";
 
-interface IProp {
-	project: IProj;
-}
 export default function ProjectCard({ project }: IProp) {
 	return (
 		<Link to={`/projects/${project.id}`}>

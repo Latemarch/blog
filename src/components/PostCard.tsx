@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-import { IPost } from "../apis/Firebase";
 import { BsChevronRight } from "react-icons/bs";
+import { IPostCard } from "../type";
 
-interface IProp {
-	post: IPost;
-}
-export default function PostCard({ post }: IProp) {
+export default function PostCard({ post }: IPostCard) {
 	return (
 		<Link to={`/posts/${post.id}`}>
 			<li className="relative group flex flex-col bg-red-90 m-2 mb-10 h-40 md:h-36 md:flex-row">

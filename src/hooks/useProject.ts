@@ -3,10 +3,10 @@ import {
 	addItem,
 	getItem,
 	getItems,
-	IProj,
 	removeItem,
 	updateItem,
 } from "../apis/Firebase";
+import { IProj } from "../type";
 
 export default function useProject(id?: string) {
 	const queryClient = useQueryClient();

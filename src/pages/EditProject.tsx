@@ -1,23 +1,17 @@
-import { IProj } from "../apis/Firebase";
 import Icon, { iconName, iconObj } from "../components/Icon";
+import { IEditProject } from "../type";
 
 const style =
 	"flex w-full focus:outline-none text-2xl dark:bg-Dinput items-start";
 const icons: iconName[] = Object.keys(iconObj) as iconName[];
-interface IProp {
-	project: IProj;
-	handleStacks: (e: React.MouseEvent<HTMLDivElement>) => void;
-	handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-	getIconStyle: (arg: string) => React.CSSProperties;
-}
+
 export default function EditProject({
 	project,
 	handleStacks,
 	handleInput,
 	handleSubmit,
 	getIconStyle,
-}: IProp) {
+}: IEditProject) {
 	return (
 		<section className="pb-20">
 			<form className="flex w-full flex-col space-y-2 " onSubmit={handleSubmit}>
@@ -53,7 +47,7 @@ export default function EditProject({
 					value={project.published}
 					onChange={handleInput}
 				/>
-				<input
+				<textarea
 					className={`${style} h-48`}
 					name="detail"
 					placeholder="detail"

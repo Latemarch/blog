@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import usePost from "../hooks/usePost";
-import { IAuth } from "../redux/slices/userSlice";
 import Post from "../pages/Post";
+import { IAuth } from "../redux/slices/userSlice";
 
 export default function PostContainer() {
 	const { user } = useSelector<IAuth>((state) => state.user) as IAuth;

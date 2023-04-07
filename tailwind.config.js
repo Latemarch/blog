@@ -5,6 +5,21 @@ module.exports = {
 	theme: {
 		screens: {
 			xs: "500px",
+			// => @media (min-width: 500px) { ... }
+			sm: "640px",
+			// => @media (min-width: 640px) { ... }
+
+			md: "768px",
+			// => @media (min-width: 768px) { ... }
+
+			lg: "1024px",
+			// => @media (min-width: 1024px) { ... }
+
+			xl: "1280px",
+			// => @media (min-width: 1280px) { ... }
+
+			"2xl": "1536px",
+			// => @media (min-width: 1536px) { ... }
 		},
 		extend: {
 			backgroundColor: {
@@ -12,10 +27,13 @@ module.exports = {
 				Dbg2: "#18181B",
 				Dtab: "#252529",
 				Dinput: "#161A22",
+				bg: "#FAFAFA",
+				bg2: "white",
+				tab: "white",
 			},
 			textColor: {
 				Dh1: "#F4F4F5",
-				Dspan: "#9999A2",
+				Dspan: "9999A2",
 			},
 		},
 	},

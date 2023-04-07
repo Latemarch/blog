@@ -1,7 +1,6 @@
 interface IProps {
 	name: string;
-	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => any;
-	// onClick?: any;
+	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Button({ name, onClick }: IProps) {

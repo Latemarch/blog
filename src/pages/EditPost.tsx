@@ -1,26 +1,18 @@
 import MarkdownEditor from "@uiw/react-markdown-editor";
-import React, { SetStateAction, useState } from "react";
-import { IPost } from "../apis/Firebase";
+import { IEditPost } from "../type";
 
-interface IProp {
-	post: IPost;
-	markdown: string;
-	handleSubmit(e: React.FormEvent<HTMLFormElement>): void;
-	handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
-	setMarkDown(e: any): void;
-}
 export default function EditPost({
 	post,
 	markdown,
 	handleSubmit,
 	handleInput,
 	setMarkDown,
-}: IProp) {
+}: IEditPost) {
 	return (
 		<div className="flex h-full flex-col">
 			<form className="flex h-full flex-col" onSubmit={handleSubmit}>
 				<input
-					className="focus:outline-none text-2xl bg-Dinput"
+					className="focus:outline-none text-2xl dark:bg-Dbg2 my-2 p-1 border-b border-zinc-700/50 "
 					value={post.title}
 					onChange={handleInput}
 					name={"title"}
@@ -34,7 +26,7 @@ export default function EditPost({
 					value={markdown}
 				/>
 				<div className="flex justify-end">
-					<button className="border mt-4 p-2 rounded-lg bg-Dtab">submit</button>
+					<button className="border mt-4 p-2 rounded-lg bg-Dtab">Submit</button>
 				</div>
 			</form>
 		</div>

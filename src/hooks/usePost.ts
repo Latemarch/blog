@@ -3,10 +3,10 @@ import {
 	addItem,
 	getItem,
 	getItems,
-	IPost,
 	removeItem,
 	updateItem,
 } from "../apis/Firebase";
+import { IPost } from "../type";
 
 export default function usePost(id?: string) {
 	const queryClient = useQueryClient();

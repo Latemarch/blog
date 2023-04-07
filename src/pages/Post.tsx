@@ -2,16 +2,11 @@ import MarkdownEditor from "@uiw/react-markdown-editor";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { formatDate } from "../components/PostCard";
-import { IPost } from "../apis/Firebase";
 import Modal from "../components/Modal";
 import { useState } from "react";
+import { IPostFC } from "../type";
 
-interface IProp {
-	post: IPost;
-	isAdmin: boolean;
-	onDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-export default function Post({ post, isAdmin, onDelete }: IProp) {
+export default function Post({ post, isAdmin, onDelete }: IPostFC) {
 	const navigate = useNavigate();
 	const [isModal, setIsModal] = useState(false);
 	const hanldeModal = (e: React.MouseEvent<HTMLButtonElement>) => {

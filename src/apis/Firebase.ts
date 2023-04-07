@@ -11,14 +11,12 @@ import {
 	getAuth,
 	signInWithPopup,
 	GoogleAuthProvider,
-	User,
 	onAuthStateChanged,
 	signOut,
-	NextFn,
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { v4 as uuid } from "uuid";
-import { iconName } from "../components/Icon";
+import { IPost, IProj, IUser } from "../type";
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 	// authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -109,30 +107,30 @@ export function removeItem(item: IPost | IProj) {
 	return remove(ref(database, `${item.category}/${item.id}`));
 }
 
-export interface IProj {
-	category: string;
-	id: string;
-	title: string;
-	createdAt: number;
-	stacks: iconName[];
-	detail: string;
-	git?: string;
-	published?: string;
-}
-export type IPost = {
-	category: string;
-	id: string;
-	author: string;
-	title: string;
-	body: string;
-	createdAt: number;
-	tag?: string[];
-};
+// export interface IProj {
+// 	category: string;
+// 	id: string;
+// 	title: string;
+// 	createdAt: number;
+// 	stacks: iconName[];
+// 	detail: string;
+// 	git?: string;
+// 	published?: string;
+// }
+// export type IPost = {
+// 	category: string;
+// 	id: string;
+// 	author: string;
+// 	title: string;
+// 	body: string;
+// 	createdAt: number;
+// 	tag?: string[];
+// };
 
-export interface IUser {
-	isAdmin: any;
-	photoURL: string | null;
-	uid: string;
-	email: string | null;
-	displayName: string | null;
-}
+// export interface IUser {
+// 	isAdmin: any;
+// 	photoURL: string | null;
+// 	uid: string;
+// 	email: string | null;
+// 	displayName: string | null;
+// }

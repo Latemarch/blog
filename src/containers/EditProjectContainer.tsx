@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { IProj } from "../apis/Firebase";
 import useProject from "../hooks/useProject";
 import { useNavigate, useParams } from "react-router-dom";
 import EditProject from "../pages/EditProject";
 import { iconName } from "../components/Icon";
+import { IProj } from "../type";
+
 const defaultProject: IProj = {
 	category: "projects",
 	id: "",
@@ -15,8 +16,8 @@ const defaultProject: IProj = {
 	detail: "",
 };
 export default function EditProjectContainer() {
-	const { id } = useParams();
 	const navigate = useNavigate();
+	const { id } = useParams();
 	const {
 		addProject,
 		updateProject,
@@ -26,8 +27,8 @@ export default function EditProjectContainer() {
 	const [project, setProject] = useState<IProj>(initialProj);
 	const [stacks, setStacks] = useState<string[]>([]);
 	useEffect(() => {
-		setStacks(defaultProject.stacks);
-	}, [isSuccess]);
+		id && setStacks(project.stacks);
+	}, []);
 	const handleStacks = (e: React.MouseEvent<HTMLDivElement>) => {
 		const { name } = e.currentTarget.dataset;
 		if (name)
@@ -37,7 +38,9 @@ export default function EditProjectContainer() {
 				setStacks((prev) => [...prev, name]);
 			}
 	};
-	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleInput = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
 		const { name, value } = e.target;
 		setProject((prev) => ({ ...prev, [name]: value }));
 	};

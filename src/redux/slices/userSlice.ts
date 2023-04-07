@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../apis/Firebase";
+import { IUser } from "../../type";
 
 export interface IAuth {
 	user?: IUser;

@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HeaderScroll from "./components/HeaderScroll";
 import { updateUser } from "./redux/slices/userSlice";
+import { Helmet } from "react-helmet";
+import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 function App() {
@@ -22,6 +24,12 @@ function App() {
 			<HeaderScroll height={100}>
 				<Header />
 			</HeaderScroll>
+			<HelmetProvider>
+				<Helmet>
+					<html className="dark" data-color-mode="dark" />
+					<body className="flex h-full flex-col bg-red-200 dark:bg-Dbg" />
+				</Helmet>
+			</HelmetProvider>
 			<div className="main w-full h-full  sm:px-8 mt-20 sm:mt-32 ">
 				<div className="mx-auto max-w-7xl lg:px-8  h-full ">
 					<div className="mx-auto max-w-2xl lg:max-w-5xl text-white h-full ">

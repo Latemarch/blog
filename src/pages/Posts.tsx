@@ -1,10 +1,6 @@
 import PostCard from "../components/PostCard";
 import usePost from "../hooks/usePost";
-import { IPost, IProj } from "../apis/Firebase";
 
-interface IPosts {
-	data: IPost;
-}
 export default function Posts() {
 	const {
 		postQuery: { data: posts, isLoading },

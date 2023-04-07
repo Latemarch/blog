@@ -44,7 +44,7 @@ export default function Home() {
 					<AiFillFolderOpen />
 					<p className="text-zinc-300 ml-2">Works</p>
 				</div>
-				<ul className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+				<ul className="grid xs:grid-cols-2 gap-4 lg:grid-cols-3">
 					{projects &&
 						projects.map((project) => (
 							<ProjectCard key={uuid()} project={project} />

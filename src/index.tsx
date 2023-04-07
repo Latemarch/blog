@@ -7,10 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Posts from "./pages/Posts";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import About from "./pages/About";
 import EditPostContainer from "./containers/EditPostContainer";
 import EditProjectContainer from "./containers/EditProjectContainer";
 import Project from "./pages/Project";
@@ -40,12 +38,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<React.StrictMode>
-		<HelmetProvider>
-			<Helmet>
-				<html className="dark" data-color-mode="dark" />
-				<body className="flex h-full flex-col bg-red-200 dark:bg-Dbg" />
-			</Helmet>
-		</HelmetProvider>
 		<div className="fixed inset-0 flex justify-center bg-zinc-00 sm:px-8">
 			<div className="flex w-full max-w-7xl lg:px-8">
 				<div className="w-full bg-red-100 ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
