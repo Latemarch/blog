@@ -23,7 +23,7 @@ export default function EditPostContainer() {
 	} = usePost(id);
 	useEffect(() => {
 		id && setMarkDown(prevPost.body);
-	}, []);
+	}, [id]);
 	const initialPost = prevPost?.id ? prevPost : defaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
 	const [markdown, setMarkDown] = useState<string>("");

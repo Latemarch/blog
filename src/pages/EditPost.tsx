@@ -1,5 +1,6 @@
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import { IEditPost } from "../type";
+import Tag from "../components/Tag";
 
 export default function EditPost({
 	post,

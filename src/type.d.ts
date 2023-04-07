@@ -69,3 +69,8 @@ interface IPostFC {
 interface IPostCard {
 	post: IPost;
 }
+
+export interface ITag {
+	name: string;
+	style?: React.CSSProperties;
+}
