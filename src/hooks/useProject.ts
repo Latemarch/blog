@@ -5,7 +5,7 @@ import {
 	getItems,
 	removeItem,
 	updateItem,
-} from "../apis/Firebase";
+} from "../utils/Firebase";
 import { IProj } from "../type";
 
 export default function useProject(id?: string) {

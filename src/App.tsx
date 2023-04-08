@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
-import { onUserStateChange } from "./apis/Firebase";
+import { onUserStateChange } from "./utils/Firebase";
 import "./App.css";
 import Header from "./components/Header";
 import HeaderScroll from "./components/HeaderScroll";

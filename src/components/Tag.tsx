@@ -1,12 +1,12 @@
-import React from "react";
 import { ITag } from "../type";
 
-const style = { color: "teal" };
-export default function Tag({ name, style }: ITag) {
+export default function Tag({ name, style, onClick }: ITag) {
 	return (
 		<div
-			className="flex font-bold items-center justify-center p-1 px-3 dark:bg-Dtab w-16 rounded-2xl text-xl ring-1 ring-znic-800/20"
+			data-name={name}
+			className="flex font-bold items-center justify-center p-1 px-3 dark:bg-Dtab w-20 rounded-2xl text-xl cursor-pointer"
 			style={style}
+			onClick={onClick}
 		>
 			<p className="px-4">{name}</p>
 		</div>

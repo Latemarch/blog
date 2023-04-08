@@ -13,6 +13,7 @@ import EditPostContainer from "./containers/EditPostContainer";
 import EditProjectContainer from "./containers/EditProjectContainer";
 import Project from "./pages/Project";
 import PostContainer from "./containers/PostContainer";
+import PostsContainer from "./containers/PostsContainer";
 
 const router = createBrowserRouter([
 	{
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
 			// { path: "/about", element: <About /> },
 			{ path: "/projects", element: <Projects /> },
 			{ path: "/projects/:id", element: <Project /> },
-			{ path: "/Posts", element: <Posts /> },
+			{ path: "/Posts", element: <PostsContainer /> },
 			{ path: "/posts/:id", element: <PostContainer /> },
 			{ path: "/edit/post", element: <EditPostContainer /> },
 			{ path: "/edit/post/:id", element: <EditPostContainer /> },

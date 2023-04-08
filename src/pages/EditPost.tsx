@@ -1,6 +1,7 @@
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import { IEditPost } from "../type";
 import Tag from "../components/Tag";
+import { DefaultTags } from "../defaultvalues";
 
 export default function EditPost({
 	post,
@@ -8,9 +9,11 @@ export default function EditPost({
 	handleSubmit,
 	handleInput,
 	setMarkDown,
+	getIconStyle,
+	handleTags,
 }: IEditPost) {
 	return (
-		<div className="flex h-full flex-col">
+		<div className="flex h-full flex-col pb-20">
 			<form className="flex h-full flex-col" onSubmit={handleSubmit}>
 				<input
 					className="focus:outline-none text-2xl dark:bg-Dbg2 my-2 p-1 border-b border-zinc-700/50 "
@@ -20,7 +23,16 @@ export default function EditPost({
 					placeholder="Title..."
 					required
 				/>
-
+				<ul className="flex m-1 mb-4 space-x-4">
+					{DefaultTags.map((tag) => (
+						<Tag
+							key={tag}
+							name={tag}
+							onClick={handleTags}
+							style={getIconStyle(tag)}
+						/>
+					))}
+				</ul>
 				<MarkdownEditor
 					className="h-5/6"
 					onChange={setMarkDown}

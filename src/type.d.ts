@@ -14,6 +14,8 @@ export interface IEditPost {
 	handleSubmit(e: React.FormEvent<HTMLFormElement>): void;
 	handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
 	setMarkDown(e: any): void;
+	getIconStyle: (arg: string) => React.CSSProperties;
+	handleTags: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 type IButtons = {
@@ -45,7 +47,12 @@ export interface IPost {
 	title: string;
 	body: string;
 	createdAt: number;
-	tag?: string[];
+	tags?: string[];
+}
+export interface IPosts {
+	posts: IPost[];
+	handleClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+	getIconStyle: (arg: string) => React.CSSProperties;
 }
 
 export interface IUser {
@@ -72,5 +79,13 @@ interface IPostCard {
 
 export interface ITag {
 	name: string;
-	style?: React.CSSProperties;
+	style?: React.CSSProperties | undefined;
+	onClick?: (e: any) => void;
+}
+
+type iconName = "Query" | "Redux" | "FB" | "TS" | "React";
+interface IIcon {
+	name: iconName;
+	onClick?: (e: any) => void;
+	style?: CSSProperties | undefined;
 }

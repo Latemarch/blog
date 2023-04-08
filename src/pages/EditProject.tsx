@@ -1,5 +1,5 @@
-import Icon, { iconName, iconObj } from "../components/Icon";
-import { IEditProject } from "../type";
+import Icon, { iconObj } from "../components/Icon";
+import { IEditProject, iconName } from "../type";
 
 const style =
 	"flex w-full focus:outline-none text-2xl dark:bg-Dinput items-start";

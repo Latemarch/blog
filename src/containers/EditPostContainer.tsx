@@ -4,30 +4,23 @@ import EditPost from "../pages/EditPost";
 import Button from "../components/Button";
 import usePost from "../hooks/usePost";
 import { IPost } from "../type";
+import { DefaultPost } from "../defaultvalues";
+import { getStyle } from "../utils/functions";
 
-const defaultPost: IPost = {
-	category: "posts",
-	id: "",
-	createdAt: 0,
-	author: "",
-	title: "",
-	body: "",
-	tag: [],
-};
 export default function EditPostContainer() {
 	const { id } = useParams();
-	console.log(id);
 	const {
 		addPost,
 		updatePost,
-		getPost: { data: prevPost },
+		getPost: { data: prevPost, isSuccess },
 	} = usePost(id);
 	useEffect(() => {
 		prevPost && setMarkDown(prevPost.body);
-		console.log(prevPost);
 	}, [prevPost]);
-	const initialPost = prevPost?.id ? prevPost : defaultPost;
+	const initialPost = isSuccess ? prevPost : DefaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
+	const [tags, setTags] = useState<string[]>([]);
+
 	const [markdown, setMarkDown] = useState<string>("");
 	const navigate = useNavigate();
 
@@ -35,9 +28,20 @@ export default function EditPostContainer() {
 		const { name, value } = e.target;
 		setPost((prev) => ({ ...prev, [name]: value }));
 	};
+	const handleTags = (e: React.MouseEvent<HTMLDivElement>) => {
+		const { name } = e.currentTarget.dataset;
+		if (name)
+			if (tags.includes(name)) {
+				setTags((prev) => prev.filter((el) => el !== name));
+			} else {
+				setTags((prev) => [...prev, name]);
+				console.log(tags);
+			}
+	};
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		post.body = markdown;
+		post.tags = tags;
 		if (id) {
 			updatePost.mutate(post, {
 				onSuccess: () => {
@@ -67,6 +71,8 @@ export default function EditPostContainer() {
 				handleSubmit={handleSubmit}
 				handleInput={handleInput}
 				setMarkDown={setMarkDown}
+				handleTags={handleTags}
+				getIconStyle={getStyle(tags, { color: "#37D4BF" })}
 			/>
 		</>
 	);

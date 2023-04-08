@@ -4,13 +4,14 @@ import FB from "../svgs/firebase.svg";
 import TS from "../svgs/ts.svg";
 import React from "../svgs/react.svg";
 import { CSSProperties } from "react";
+import { IIcon, iconName } from "../type";
 
-export type iconName = "Query" | "Redux" | "FB" | "TS" | "React";
-interface IProps {
-	name: iconName;
-	onClick?: (e: any) => void;
-	style?: CSSProperties | undefined;
-}
+// export type iconName = "Query" | "Redux" | "FB" | "TS" | "React";
+// interface IProps {
+// 	name: iconName;
+// 	onClick?: (e: any) => void;
+// 	style?: CSSProperties | undefined;
+// }
 export const iconObj: Record<iconName, string> = {
 	React,
 	TS,
@@ -18,7 +19,7 @@ export const iconObj: Record<iconName, string> = {
 	Redux,
 	FB,
 };
-export default function Icon({ name, onClick, style }: IProps) {
+export default function Icon({ name, onClick, style }: IIcon) {
 	return (
 		<div
 			data-name={name}

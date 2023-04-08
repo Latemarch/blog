@@ -5,7 +5,7 @@ import {
 	getItems,
 	removeItem,
 	updateItem,
-} from "../apis/Firebase";
+} from "../utils/Firebase";
 import { IPost } from "../type";
 
 export default function usePost(id?: string) {

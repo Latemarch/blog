@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./Button";
-import { logIn, logOut } from "../apis/Firebase";
+import { logIn, logOut } from "../utils/Firebase";
 import { useSelector } from "react-redux";
 import { IAuth } from "../redux/slices/userSlice";
 

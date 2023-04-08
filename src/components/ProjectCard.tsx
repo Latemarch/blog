@@ -1,5 +1,5 @@
 import { FiLink } from "react-icons/fi";
-import Icon, { iconName } from "./Icon";
+import Icon from "./Icon";
 import { Link } from "react-router-dom";
 import { IProp } from "../type";
 

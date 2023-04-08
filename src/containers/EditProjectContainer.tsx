@@ -2,19 +2,10 @@ import { useEffect, useState } from "react";
 import useProject from "../hooks/useProject";
 import { useNavigate, useParams } from "react-router-dom";
 import EditProject from "../pages/EditProject";
-import { iconName } from "../components/Icon";
-import { IProj } from "../type";
+import { IProj, iconName } from "../type";
+import { DefaultProject } from "../defaultvalues";
+import { getStyle } from "../utils/functions";
 
-const defaultProject: IProj = {
-	category: "projects",
-	id: "",
-	createdAt: Date.now(),
-	title: "",
-	git: "",
-	published: "",
-	stacks: [],
-	detail: "",
-};
 export default function EditProjectContainer() {
 	const navigate = useNavigate();
 	const { id } = useParams();
@@ -23,7 +14,7 @@ export default function EditProjectContainer() {
 		updateProject,
 		getProject: { data: prevProj, isSuccess },
 	} = useProject(id);
-	const initialProj = isSuccess ? prevProj : defaultProject;
+	const initialProj = isSuccess ? prevProj : DefaultProject;
 	const [project, setProject] = useState<IProj>(initialProj);
 	const [stacks, setStacks] = useState<string[]>([]);
 	useEffect(() => {
@@ -61,16 +52,14 @@ export default function EditProjectContainer() {
 			});
 		}
 	};
-	const getIconStyle = (stack: string): React.CSSProperties => {
-		return { filter: stacks.includes(stack) ? "brightness(1.5)" : undefined };
-	};
+
 	return (
 		<EditProject
 			project={project}
 			handleStacks={handleStacks}
 			handleInput={handleInput}
 			handleSubmit={handleSubmit}
-			getIconStyle={getIconStyle}
+			getIconStyle={getStyle(stacks, { filter: "brightness(1.5)" })}
 		/>
 	);
 }
