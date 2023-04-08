@@ -89,3 +89,23 @@ interface IIcon {
 	onClick?: (e: any) => void;
 	style?: CSSProperties | undefined;
 }
+
+type projectFilter = null | "React" | "ES6" | "ETC";
+
+interface IProjectFilter {
+	projectFilter: projectFilter;
+}
+
+type IsDark = boolean;
+interface IDarkmodeSlice {
+	isDark: IsDark;
+}
+interface IStore {
+	darkMode: IDarkmodeSlice;
+	user: IAuth;
+}
+
+interface IButton {
+	name: string;
+	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}

@@ -15,11 +15,13 @@ export default function Post({ post, isAdmin, onDelete }: IPostFC) {
 		setIsModal(!isModal);
 	};
 	return (
-		<article className="m-0 lg:m-20 pb-20">
+		<article className="m-0 lg:m-20 pb-20 text-span dark:text-Dspan">
 			{isModal && <Modal msg="Delete Post" onClick={hanldeModal} />}
 			{post && (
 				<div className="mb-12">
-					<h1 className="text-6xl font-bold">{post.title}</h1>
+					<h1 className="text-6xl font-bold text-h1 dark:text-white">
+						{post.title}
+					</h1>
 					<div className="flex items-center text-gray-500">
 						<p className="m-2">{formatDate(post.createdAt)}</p>
 						{isAdmin && (
@@ -50,7 +52,7 @@ export default function Post({ post, isAdmin, onDelete }: IPostFC) {
 				/>
 			)}
 			<div className="flex justify-end">
-				<div className="flex items-center bg-Dtab my-5 rounded-md">
+				<div className="flex items-center bg-zinc-200 dark:bg-Dtab my-10 rounded-md dark:text-zinc-100">
 					<Button name="목록으로" onClick={() => navigate("/posts")} />
 				</div>
 			</div>

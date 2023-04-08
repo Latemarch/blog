@@ -8,9 +8,11 @@ export default function Projects() {
 	} = useProject();
 	return (
 		<section className="pb-20">
-			<div className="my-10 mb-16">
-				<h1 className="text-4xl mb-4 tracking-tight">클론 코딩과 프로젝트</h1>
-				<p className="text-zinc-400 text-justify">
+			<div className="mb-10 mb-16">
+				<h1 className="text-4xl mb-4 tracking-tight text-h1 dark:text-Dh1">
+					클론 코딩과 프로젝트
+				</h1>
+				<p className="text-span dark:text-Dspan text-justify">
 					완성해본 클론코딩과 프로젝트 중 일부. 지적사항이나 의문사항은 언제든지
 					환영합니다.
 				</p>

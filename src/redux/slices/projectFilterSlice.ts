@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IProjectFilter, projectFilter } from "../../type";
 
-export type projectFilter = null | "React" | "ES6" | "ETC";
-
-export interface IProjectFilter {
-	projectFilter: projectFilter;
-}
 const initialState: IProjectFilter = {
 	projectFilter: null,
 };

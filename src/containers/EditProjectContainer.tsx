@@ -14,7 +14,7 @@ export default function EditProjectContainer() {
 		updateProject,
 		getProject: { data: prevProj, isSuccess },
 	} = useProject(id);
-	const initialProj = isSuccess ? prevProj : DefaultProject;
+	const initialProj = prevProj ? prevProj : DefaultProject;
 	const [project, setProject] = useState<IProj>(initialProj);
 	const [stacks, setStacks] = useState<string[]>([]);
 	useEffect(() => {

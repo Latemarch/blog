@@ -1,9 +1,6 @@
-interface IProps {
-	name: string;
-	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
+import { IButton } from "../type";
 
-export default function Button({ name, onClick }: IProps) {
+export default function Button({ name, onClick }: IButton) {
 	return (
 		<button
 			id={name}

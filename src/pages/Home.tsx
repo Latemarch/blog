@@ -18,9 +18,11 @@ export default function Home() {
 		projectQuery: { data: projects },
 	} = useProject();
 	return (
-		<div className="pb-20">
-			<h1 className="text-4xl mb-4">개발 블로그가 되고싶은 개발 공부 블로그</h1>
-			<span className="text-zinc-400">
+		<div className="pb-20 text-zinc-600 dark:text-zinc-400">
+			<h1 className="text-4xl mb-4 text-h1 dark:text-Dh1">
+				개발 블로그가 되고싶은 개발 공부 블로그
+			</h1>
+			<span>
 				물리학과를 졸업 후 개발자가 되고자 개발공부를 시작하게 된 '다시학생'.
 			</span>
 			<div className="flex space-x-3 mt-6">
@@ -30,19 +32,20 @@ export default function Home() {
 				<AiOutlineMail />
 			</div>
 			<div className="my-20">
-				<div className="mx-2 mb-4  flex ">Posts</div>
-				<ul className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+				<div className="mx-2 mb-4 flex text-lg">Posts</div>
+				<ul className="md:border-l md:border-zinc-200 md:pl-6 md:dark:border-zinc-700/40">
 					{posts &&
 						posts
+							.sort((a, b) => b.createdAt - a.createdAt)
 							.slice(0, 3)
 							.map((post) => <PostCard key={post.id} post={post} />)}
 				</ul>
 			</div>
 
-			<div className="border border-zinc-700/40 rounded-2xl p-6 pt-2">
+			<div className="border border-zinc-300/40 dark:border-zinc-700/40 rounded-2xl p-6 pt-2">
 				<div className="flex items-center mb-3">
 					<AiFillFolderOpen />
-					<p className="text-zinc-300 ml-2">Works</p>
+					<p className="text-zinc-600 dark:text-zinc-300 ml-2">Works</p>
 				</div>
 				<ul className="grid xs:grid-cols-2 gap-4 lg:grid-cols-3">
 					{projects &&

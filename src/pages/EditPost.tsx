@@ -13,10 +13,10 @@ export default function EditPost({
 	handleTags,
 }: IEditPost) {
 	return (
-		<div className="flex h-full flex-col pb-20">
+		<div className="flex h-full flex-col pb-20 text-span dark:text-Dspan">
 			<form className="flex h-full flex-col" onSubmit={handleSubmit}>
 				<input
-					className="focus:outline-none text-2xl dark:bg-Dbg2 my-2 p-1 border-b border-zinc-700/50 "
+					className="focus:outline-none text-2xl dark:bg-Dbg2 my-2 p-1 border-b border-zinc-700/50 text-h1 dark:text-Dh1"
 					value={post.title}
 					onChange={handleInput}
 					name={"title"}
@@ -39,7 +39,9 @@ export default function EditPost({
 					value={markdown}
 				/>
 				<div className="flex justify-end">
-					<button className="border mt-4 p-2 rounded-lg bg-Dtab">Submit</button>
+					<button className="border mt-4 p-2 rounded-lg bg-zinc-200 dark:bg-Dtab">
+						Submit
+					</button>
 				</div>
 			</form>
 		</div>

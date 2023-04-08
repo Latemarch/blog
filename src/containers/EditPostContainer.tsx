@@ -12,12 +12,12 @@ export default function EditPostContainer() {
 	const {
 		addPost,
 		updatePost,
-		getPost: { data: prevPost, isSuccess },
+		getPost: { data: prevPost },
 	} = usePost(id);
 	useEffect(() => {
 		prevPost && setMarkDown(prevPost.body);
 	}, [prevPost]);
-	const initialPost = isSuccess ? prevPost : DefaultPost;
+	const initialPost = prevPost ? prevPost : DefaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
 	const [tags, setTags] = useState<string[]>([]);
 
@@ -57,10 +57,11 @@ export default function EditPostContainer() {
 		}
 	};
 
+	console.log(post);
 	return (
 		<>
 			{!id && (
-				<div className="flex">
+				<div className="flex text-h1 dark:text-Dh1">
 					<Button name={"Post"} onClick={() => navigate("/edit/post")} />
 					<Button name={"Project"} onClick={() => navigate("/edit/project")} />
 				</div>

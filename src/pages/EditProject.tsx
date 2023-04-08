@@ -2,7 +2,7 @@ import Icon, { iconObj } from "../components/Icon";
 import { IEditProject, iconName } from "../type";
 
 const style =
-	"flex w-full focus:outline-none text-2xl dark:bg-Dinput items-start";
+	"flex w-full p-2 focus:outline-none text-2xl bg-zinc-200 dark:bg-zinc-800 text-black dark:text-zinc-200 dark:bg-Dinput items-start";
 const icons: iconName[] = Object.keys(iconObj) as iconName[];
 
 export default function EditProject({
@@ -15,7 +15,7 @@ export default function EditProject({
 	return (
 		<section className="pb-20">
 			<form className="flex w-full flex-col space-y-2 " onSubmit={handleSubmit}>
-				<div className="flex">
+				<div className="flex mb-2">
 					{icons.map((icon) => (
 						<Icon
 							key={icon}
@@ -48,7 +48,7 @@ export default function EditProject({
 					onChange={handleInput}
 				/>
 				<textarea
-					className={`${style} h-48`}
+					className={`${style} h-20`}
 					name="detail"
 					placeholder="detail"
 					value={project.detail}
