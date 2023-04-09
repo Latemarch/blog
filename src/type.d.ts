@@ -1,5 +1,7 @@
 export interface IEditProject {
 	project: IProj;
+	markDown: string;
+	setMarkDown(e: any): void;
 	handleStacks: (e: React.MouseEvent<HTMLDivElement>) => void;
 	handleInput: (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -34,9 +36,10 @@ export interface IProj {
 	category: string;
 	id: string;
 	title: string;
+	detail: string;
+	body: string;
 	createdAt: number;
 	stacks: iconName[];
-	detail: string;
 	git?: string;
 	published?: string;
 }

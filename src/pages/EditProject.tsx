@@ -1,3 +1,4 @@
+import MarkdownEditor from "@uiw/react-markdown-editor";
 import Icon, { iconObj } from "../components/Icon";
 import { IEditProject, iconName } from "../type";
 
@@ -7,10 +8,12 @@ const icons: iconName[] = Object.keys(iconObj) as iconName[];
 
 export default function EditProject({
 	project,
+	markDown,
 	handleStacks,
 	handleInput,
 	handleSubmit,
 	getIconStyle,
+	setMarkDown,
 }: IEditProject) {
 	return (
 		<section className="pb-20">
@@ -53,6 +56,12 @@ export default function EditProject({
 					placeholder="detail"
 					value={project.detail}
 					onChange={handleInput}
+				/>
+				<p>{`${project.detail.length}/50`}</p>
+				<MarkdownEditor
+					className="h-screen overflow-auto"
+					value={markDown}
+					onChange={setMarkDown}
 				/>
 				<div className="flex justify-end">
 					<button className="border mt-4 p-2 rounded-lg bg-Dtab">submit</button>

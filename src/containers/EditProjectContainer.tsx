@@ -12,13 +12,15 @@ export default function EditProjectContainer() {
 	const {
 		addProject,
 		updateProject,
-		getProject: { data: prevProj, isSuccess },
+		getProject: { data: prevProj },
 	} = useProject(id);
 	const initialProj = prevProj ? prevProj : DefaultProject;
 	const [project, setProject] = useState<IProj>(initialProj);
 	const [stacks, setStacks] = useState<string[]>([]);
+	const [markDown, setMarkDown] = useState<string>("");
 	useEffect(() => {
 		prevProj && setStacks(project.stacks);
+		prevProj && setMarkDown(project.body);
 	}, [prevProj]);
 	const handleStacks = (e: React.MouseEvent<HTMLDivElement>) => {
 		const { name } = e.currentTarget.dataset;
@@ -33,11 +35,13 @@ export default function EditProjectContainer() {
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		const { name, value } = e.target;
+		if (name === "detail" && value.length > 50) return;
 		setProject((prev) => ({ ...prev, [name]: value }));
 	};
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		project.stacks = stacks as iconName[];
+		project.body = markDown;
 		if (id) {
 			updateProject.mutate(project, {
 				onSuccess: () => {
@@ -56,6 +60,8 @@ export default function EditProjectContainer() {
 	return (
 		<EditProject
 			project={project}
+			markDown={markDown}
+			setMarkDown={setMarkDown}
 			handleStacks={handleStacks}
 			handleInput={handleInput}
 			handleSubmit={handleSubmit}

@@ -21,4 +21,5 @@ export const DefaultProject: IProj = {
 	published: "",
 	stacks: [],
 	detail: "",
+	body: "",
 };

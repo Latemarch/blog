@@ -25,11 +25,16 @@ export default function Home() {
 			<span>
 				물리학과를 졸업 후 개발자가 되고자 개발공부를 시작하게 된 '다시학생'.
 			</span>
-			<div className="flex space-x-3 mt-6">
-				<BsGithub />
-				<BsTwitter />
-				<AiOutlineInstagram />
-				<AiOutlineMail />
+			<div className="flex space-x-3 mt-4 items-center">
+				<a href="https://github.com/latemarch" target="_blank">
+					<BsGithub />
+				</a>
+				{/* <BsTwitter /> */}
+				{/* <AiOutlineInstagram /> */}
+				<div className="flex items-center gap-1">
+					<AiOutlineMail />
+					<p>naturalcall1313@gmail.com</p>
+				</div>
 			</div>
 			<div className="my-20">
 				<div className="mx-2 mb-4 flex text-lg">Posts</div>
