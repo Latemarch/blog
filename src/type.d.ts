@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export interface IEditProject {
 	project: IProj;
 	markDown: string;
@@ -111,4 +113,5 @@ interface IStore {
 interface IButton {
 	name: string;
 	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	style?: CSSProperties;
 }

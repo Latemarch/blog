@@ -37,7 +37,7 @@ export default function HeaderScroll({
 		<div
 			className={`${
 				isFixed ? "fixed" : "absolute"
-			} flex w-full justify-center z-50`}
+			} flex w-full justify-center z-20`}
 			style={headerStyle}
 		>
 			{children}

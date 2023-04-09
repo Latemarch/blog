@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IDarkmodeSlice, IsDark } from "../../type";
+import { createSlice } from "@reduxjs/toolkit";
+import { IDarkmodeSlice } from "../../type";
 
 const initialState: IDarkmodeSlice = {
 	isDark: true,
