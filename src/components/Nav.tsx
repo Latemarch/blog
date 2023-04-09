@@ -14,7 +14,7 @@ export default function Nav({ buttons }: INav) {
 				<Link to={buttons[key]} key={key}>
 					<div className="relative ">
 						{key.toLocaleLowerCase() === category && (
-							<div className="absolute -z-50 flex w-12 h-2 top-0 left-0 bottom-0 right-0 mx-auto my-auto shadow-lg shadow-teal-400 "></div>
+							<div className="absolute -z-50 flex w-12 h-2 top-0 left-0 bottom-0 right-0 mx-auto my-auto"></div>
 						)}
 						<li key={key}>
 							<Button
