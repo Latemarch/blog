@@ -24,6 +24,10 @@ export default function EditProjectContainer() {
 	}, [prevProj]);
 	const handleStacks = (e: React.MouseEvent<HTMLDivElement>) => {
 		const { name } = e.currentTarget.dataset;
+		if (!stacks) {
+			setStacks([]);
+			return;
+		}
 		if (name)
 			if (stacks.includes(name)) {
 				setStacks((prev) => prev.filter((el) => el !== name));

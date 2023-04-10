@@ -20,9 +20,9 @@ export default function Projects() {
 			<ul className="grid xs:grid-cols-2 bg-gra-200 items-center gap-10 gap-y-10 md:grid-cols-3 ">
 				{/* <ul className="flex justify-between sm:justify-start flex-wrap px-4 sm:px-0"> */}
 				{projects &&
-					projects.map((project) => (
-						<ProjectCard key={uuid()} project={project} />
-					))}
+					projects
+						.sort((a, b) => b.createdAt - a.createdAt)
+						.map((project) => <ProjectCard key={uuid()} project={project} />)}
 			</ul>
 		</section>
 	);

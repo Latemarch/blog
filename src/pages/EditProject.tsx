@@ -1,6 +1,7 @@
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import Icon, { iconObj } from "../components/Icon";
 import { IEditProject, iconName } from "../type";
+import { useEffect, useState } from "react";
 
 const style =
 	"flex w-full p-2 focus:outline-none text-2xl bg-zinc-200 dark:bg-zinc-800 text-black dark:text-zinc-200 dark:bg-Dinput items-start";
@@ -15,6 +16,10 @@ export default function EditProject({
 	getIconStyle,
 	setMarkDown,
 }: IEditProject) {
+	const [isEdit, setIsEdit] = useState<boolean>(false);
+	useEffect(() => {
+		project.id && setIsEdit(true);
+	}, []);
 	return (
 		<section className="pb-20">
 			<form className="flex w-full flex-col space-y-2 " onSubmit={handleSubmit}>
@@ -35,7 +40,19 @@ export default function EditProject({
 					value={project.title}
 					onChange={handleInput}
 				/>
-
+				{isEdit || (
+					<input
+						className={`${style} w-1/2 h-12`}
+						name="id"
+						placeholder={`/${project.title
+							.toLowerCase()
+							.trim()
+							.replace(/\s+/g, "-")
+							.replace(/[^a-zA-Z0-9-]+/g, "")}`}
+						value={isEdit || project.id}
+						onChange={handleInput}
+					/>
+				)}
 				<input
 					className={style}
 					name="git"
