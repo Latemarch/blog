@@ -14,15 +14,17 @@ export default function EditPostContainer() {
 		updatePost,
 		getPost: { data: prevPost },
 	} = usePost(id);
-	useEffect(() => {
-		prevPost && setMarkDown(prevPost.body);
-	}, [prevPost]);
 	const initialPost = prevPost ? prevPost : DefaultPost;
 	const [post, setPost] = useState<IPost>(initialPost);
 	const [tags, setTags] = useState<string[]>([]);
-
 	const [markdown, setMarkDown] = useState<string>("");
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		prevPost && setMarkDown(prevPost.body);
+		prevPost && setTags(prevPost.tags);
+		prevPost && setPost(prevPost);
+	}, [prevPost]);
 
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -30,12 +32,15 @@ export default function EditPostContainer() {
 	};
 	const handleTags = (e: React.MouseEvent<HTMLDivElement>) => {
 		const { name } = e.currentTarget.dataset;
+		if (!tags) {
+			setTags([]);
+			return;
+		}
 		if (name)
 			if (tags.includes(name)) {
 				setTags((prev) => prev.filter((el) => el !== name));
 			} else {
 				setTags((prev) => [...prev, name]);
-				console.log(tags);
 			}
 	};
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -57,7 +62,6 @@ export default function EditPostContainer() {
 		}
 	};
 
-	console.log(post);
 	return (
 		<>
 			{!id && (

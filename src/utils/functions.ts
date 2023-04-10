@@ -6,6 +6,8 @@
  */
 export function getStyle(array: string[], style: React.CSSProperties) {
 	return function (el: string) {
+		if (!el) return {};
+		if (!array) return {};
 		return array.includes(el) ? style : {};
 	};
 }

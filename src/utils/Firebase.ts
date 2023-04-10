@@ -69,7 +69,9 @@ export async function isAdmin(user: IUser) {
 }
 
 export function addItem(item: IPost | IProj) {
-	const id = uuid();
+	const id = item.id
+		? item.id
+		: `${item.title.toLowerCase().trim().replace(/\s+/g, "-")}`;
 
 	return set(
 		ref(database, `${item.category}/${id}`), //

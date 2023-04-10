@@ -20,7 +20,6 @@ function App() {
 			dispatch(updateUser(user));
 		});
 	}, []);
-	console.log(isDark);
 	return (
 		<div className="relative flex flex-col items-center px-8 h-screen ">
 			<HeaderScroll height={100}>
