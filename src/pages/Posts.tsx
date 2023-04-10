@@ -26,7 +26,7 @@ export default function Posts({ posts, handleClick, getIconStyle }: IPosts) {
 					/>
 				))}
 			</ul>
-			<div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+			<div className="md:border-l md:border-zinc-200 md:pl-6 md:dark:border-zinc-700/40">
 				{!posts && <p>Loading...</p>}
 				{posts &&
 					posts
