@@ -44,16 +44,21 @@ export default function EditProjectContainer() {
 	};
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		project.stacks = stacks as iconName[];
-		project.body = markDown;
+		// project.stacks = stacks as iconName[];
+		// project.body = markDown;
+		const updatedProject: IProj = {
+			...project,
+			body: markDown,
+			stacks: stacks as iconName[],
+		};
 		if (id) {
-			updateProject.mutate(project, {
+			updateProject.mutate(updatedProject, {
 				onSuccess: () => {
 					navigate(`/projects/${id}`);
 				},
 			});
 		} else {
-			addProject.mutate(project, {
+			addProject.mutate(updatedProject, {
 				onSuccess: () => {
 					navigate("/projects");
 				},

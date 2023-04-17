@@ -3,7 +3,6 @@ import Redux from "../svgs/redux.svg";
 import FB from "../svgs/firebase.svg";
 import TS from "../svgs/ts.svg";
 import React from "../svgs/react.svg";
-import { CSSProperties } from "react";
 import { IIcon, iconName } from "../type";
 
 export const iconObj: Record<iconName, string> = {
@@ -21,7 +20,7 @@ export default function Icon({ name, onClick, style }: IIcon) {
 			onClick={onClick}
 			style={style}
 		>
-			<img className="scale-110" src={iconObj[name]} />
+			<img className="scale-110" src={iconObj[name]} alt={iconObj[name]} />
 		</div>
 	);
 }

@@ -45,16 +45,21 @@ export default function EditPostContainer() {
 	};
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		post.body = markdown;
-		post.tags = tags;
+		// post.body = markdown;
+		// post.tags = tags;
+		const updatedPost = {
+			...post,
+			body: markdown,
+			tags,
+		};
 		if (id) {
-			updatePost.mutate(post, {
+			updatePost.mutate(updatedPost, {
 				onSuccess: () => {
 					navigate(`/posts/${id}`);
 				},
 			});
 		} else {
-			addPost.mutate(post, {
+			addPost.mutate(updatedPost, {
 				onSuccess: () => {
 					navigate("/posts");
 				},
