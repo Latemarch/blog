@@ -2,12 +2,8 @@ import PostCard from "../components/PostCard";
 import ProjectCard from "../components/ProjectCard";
 import usePost from "../hooks/usePost";
 import { v4 as uuid } from "uuid";
-import {
-	AiFillFolderOpen,
-	AiOutlineInstagram,
-	AiOutlineMail,
-} from "react-icons/ai";
-import { BsGithub, BsTwitter } from "react-icons/bs";
+import { AiFillFolderOpen, AiOutlineMail } from "react-icons/ai";
+import { BsGithub } from "react-icons/bs";
 import useProject from "../hooks/useProject";
 
 export default function Home() {
