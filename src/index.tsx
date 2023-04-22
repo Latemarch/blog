@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import { Provider } from 'react-redux'
@@ -47,13 +43,7 @@ root.render(
       </div>
     </div>
     <Provider store={store}>
-      {window.location.host === 'latemarch.github.io' ? (
-        <BrowserRouter basename="/blog">
-          <RouterProvider router={router} />
-        </BrowserRouter>
-      ) : (
-        <RouterProvider router={router} />
-      )}
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>,
 )
