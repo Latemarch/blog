@@ -47,9 +47,13 @@ root.render(
       </div>
     </div>
     <Provider store={store}>
-      <BrowserRouter basename="/blog">
+      {window.location.host === 'latemarch.github.io' ? (
+        <BrowserRouter basename="/blog">
+          <RouterProvider router={router} />
+        </BrowserRouter>
+      ) : (
         <RouterProvider router={router} />
-      </BrowserRouter>
+      )}
     </Provider>
   </React.StrictMode>,
 )
