@@ -35,7 +35,8 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <div className="fixed inset-0 flex justify-center bg-BG dark:bg-black sm:px-8">
       <div className="flex w-full max-w-7xl  lg:px-8">
         {/* <div className="w-full bg-BG2 ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div> */}
@@ -45,7 +46,8 @@ root.render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>,
+  </>,
+  // </React.StrictMode>,
 )
 
 // If you want to start measuring performance in your app, pass a function
