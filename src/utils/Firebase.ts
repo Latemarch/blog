@@ -1,13 +1,7 @@
 import {
   child,
-  equalTo,
   get,
   getDatabase,
-  limitToLast,
-  onValue,
-  orderByChild,
-  orderByKey,
-  query,
   ref,
   remove,
   set,
@@ -21,7 +15,6 @@ import {
   signOut,
 } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
-import { v4 as uuid } from 'uuid'
 import { IPost, IProj, IUser } from '../type'
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -41,6 +34,7 @@ const auth = getAuth()
 const database = getDatabase()
 const dbRef = ref(getDatabase(app))
 
+const isLocal = true
 export async function logIn() {
   signInWithPopup(auth, provider).catch(console.error)
 }
@@ -90,22 +84,35 @@ export function addItem(item: IPost | IProj) {
 }
 
 export async function getItems(item: string): Promise<any[]> {
-  const snapshot = await get(child(dbRef, item))
-  if (snapshot.exists()) {
-    const data: any[] = Object.values(snapshot.val())
-    return data
+  if (isLocal) {
+    return await fetch(`/datas/${item}.json`) //
+      .then((data) => data.json())
+      .then((obj) => Object.values(obj).map((el) => el))
+  } else {
+    const snapshot = await get(child(dbRef, item))
+    if (snapshot.exists()) {
+      const data: any[] = Object.values(snapshot.val())
+      return data
+    }
+    return []
   }
-  return []
 }
 
 export async function getItem(
   id: string | undefined,
   category: string,
 ): Promise<any> {
-  const snapshot = await get(child(dbRef, `${category}/${id}`))
-  const item = snapshot.val()
-  return item
+  if (isLocal) {
+    return await fetch(`/datas/${category}.json`) //
+      .then((data) => data.json())
+      .then((obj) => id && obj[id])
+  } else {
+    const snapshot = await get(child(dbRef, `${category}/${id}`))
+    const item = snapshot.val()
+    return item
+  }
 }
+
 export async function updateItem(newData: any) {
   return update(dbRef, { [`${newData.category}/${newData.id}`]: newData })
     .then(() => console.log('updated'))
@@ -114,31 +121,3 @@ export async function updateItem(newData: any) {
 export function removeItem(item: IPost | IProj) {
   return remove(ref(database, `${item.category}/${item.id}`))
 }
-
-// export interface IProj {
-// 	category: string;
-// 	id: string;
-// 	title: string;
-// 	createdAt: number;
-// 	stacks: iconName[];
-// 	detail: string;
-// 	git?: string;
-// 	published?: string;
-// }
-// export type IPost = {
-// 	category: string;
-// 	id: string;
-// 	author: string;
-// 	title: string;
-// 	body: string;
-// 	createdAt: number;
-// 	tag?: string[];
-// };
-
-// export interface IUser {
-// 	isAdmin: any;
-// 	photoURL: string | null;
-// 	uid: string;
-// 	email: string | null;
-// 	displayName: string | null;
-// }

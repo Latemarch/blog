@@ -1,7 +1,7 @@
 import { FiLink } from 'react-icons/fi'
-import Icon from './Icon'
 import { Link } from 'react-router-dom'
 import { IProp } from '../type'
+import Icon from './Icon'
 
 export default function ProjectCard({ project }: IProp) {
   return (
