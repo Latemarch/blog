@@ -1,6 +1,6 @@
 import { IPost, IProj } from "./type";
 
-export const DefaultTags = ["React", "ES", "ETC"];
+export const DefaultTags = ["Nextjs", "React", "ES", "ETC"];
 
 export const DefaultPost: IPost = {
 	category: "posts",

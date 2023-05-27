@@ -50,12 +50,12 @@ export default function Project() {
 					<div className="mb-2">{project.detail}</div>
 					<div className="flex mb-10 gap-2 text-xl">
 						{project.git && (
-							<a href={project.git} target="_blank">
+							<a href={project.git} target="_blank" rel="noreferrer">
 								<BsGithub />
 							</a>
 						)}
 						{project.published && (
-							<a href={project.published} target="_blank">
+							<a href={project.published} target="_blank" rel="noreferrer">
 								<FiLink />
 							</a>
 						)}

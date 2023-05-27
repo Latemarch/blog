@@ -4,7 +4,7 @@ export default function About() {
 	return (
 		<section className="grid grid-cols-1 gap-y-16 mt-16 lg:grid-cols-2 lg:grid-rows-fr">
 			<div className="max-w-xs lg:pl-20 px-2.5 lg:max-w-none">
-				<img src={logo} />
+				<img src={logo} alt="logo" />
 			</div>
 			<div className="lg:order-first lg:row-span-2">
 				<h1 className="font-bold text-4xl tracking-tight mb-20">
@@ -29,7 +29,7 @@ export default function About() {
 			<div className="flex lg:pl-20">
 				<ul>
 					<li className="fex">
-						<a className="flex items-center">
+						<a href="/" className="flex items-center">
 							<BsGithub />
 							<p className="ml-4">git-hub</p>
 						</a>
