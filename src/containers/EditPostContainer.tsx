@@ -45,6 +45,7 @@ export default function EditPostContainer() {
 	};
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		console.log("submit");
 		// post.body = markdown;
 		// post.tags = tags;
 		const updatedPost = {

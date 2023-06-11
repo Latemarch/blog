@@ -8,7 +8,7 @@ export default function Projects() {
 	} = useProject();
 	return (
 		<section className="pb-20">
-			<div className="mb-10 mb-16">
+			<div className="mb-16">
 				<h1 className="text-4xl mb-4 tracking-tight text-h1 dark:text-Dh1">
 					클론 코딩과 프로젝트
 				</h1>

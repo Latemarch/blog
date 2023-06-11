@@ -54,7 +54,7 @@ export default function EditPost({
 					))}
 				</ul>
 				<MarkdownEditor
-					className="h-5/6"
+					className="h-5/6 text-lg "
 					onChange={setMarkDown}
 					value={markdown}
 				/>
