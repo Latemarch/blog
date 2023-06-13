@@ -16,7 +16,7 @@
 		"createdAt": 1686388952540,
 		"detail": "React로 만들었던 블로그를 nextjs의 정적 페이지 빌드를 이용하여 리펙터 함.",
 		"git": "https://github.com/Latemarch/blog-nextjs",
-		"id": "/nextjsblogrefactor",
+		"id": "nextjsblogrefactor",
 		"stacks": ["Next", "TS"],
 		"published": "https://latemarch.vercel.app/",
 		"title": "Next.js 블로그 리펙터"
